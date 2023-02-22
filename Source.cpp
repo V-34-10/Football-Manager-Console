@@ -1,4 +1,5 @@
-// Необхідні бібліотеки
+system("chcp 1251");
+// ГЌГҐГ®ГЎГµВіГ¤Г­Ві ГЎВіГЎГ«ВіГ®ГІГҐГЄГЁ
 #include <iostream>
 #include <iomanip>
 #include <stdlib.h>
@@ -11,27 +12,27 @@
 #include <conio.h>
 
 using namespace std;
-struct player // структура даних - гравець
+struct player // Г±ГІГ°ГіГЄГІГіГ°Г  Г¤Г Г­ГЁГµ - ГЈГ°Г ГўГҐГ¶Гј
 {	
-	char first_second_name_player[20]; // П.І. гравця
-	time_t date_of_birth; // Дата народження 
-	char sex[5]; // стать гравця (вводиться з клавіатури «ж» – жіноча, «ч» – чоловіча).
-	char nationality[15]; // громадянство
-	char role[4]; // Амплуа(обирається зі списку : ВР – воротар, ЛП – лівий півзахисник, ЦФ – центр форвард)
-	size_t kol_games; // KG – кількість проведених ігор 
-	size_t kod; // Код гравця
+	char first_second_name_player[20]; // ГЏ.ВІ. ГЈГ°Г ГўГ¶Гї
+	time_t date_of_birth; // Г„Г ГІГ  Г­Г Г°Г®Г¤Г¦ГҐГ­Г­Гї 
+	char sex[5]; // Г±ГІГ ГІГј ГЈГ°Г ГўГ¶Гї (ГўГўГ®Г¤ГЁГІГјГ±Гї Г§ ГЄГ«Г ГўВіГ ГІГіГ°ГЁ В«Г¦В» вЂ“ Г¦ВіГ­Г®Г·Г , В«Г·В» вЂ“ Г·Г®Г«Г®ГўВіГ·Г ).
+	char nationality[15]; // ГЈГ°Г®Г¬Г Г¤ГїГ­Г±ГІГўГ®
+	char role[4]; // ГЂГ¬ГЇГ«ГіГ (Г®ГЎГЁГ°Г ВєГІГјГ±Гї Г§Ві Г±ГЇГЁГ±ГЄГі : Г‚Гђ вЂ“ ГўГ®Г°Г®ГІГ Г°, Г‹ГЏ вЂ“ Г«ВіГўГЁГ© ГЇВіГўГ§Г ГµГЁГ±Г­ГЁГЄ, Г–Г” вЂ“ Г¶ГҐГ­ГІГ° ГґГ®Г°ГўГ Г°Г¤)
+	size_t kol_games; // KG вЂ“ ГЄВіГ«ГјГЄВіГ±ГІГј ГЇГ°Г®ГўГҐГ¤ГҐГ­ГЁГµ ВіГЈГ®Г° 
+	size_t kod; // ГЉГ®Г¤ ГЈГ°Г ГўГ¶Гї
 };
 
-struct team // структура даних - команда
+struct team // Г±ГІГ°ГіГЄГІГіГ°Г  Г¤Г Г­ГЁГµ - ГЄГ®Г¬Г Г­Г¤Г 
 {
-	char country[15]; // країна
-	char team_p[15]; // команда гравця
-	size_t transfer_cost; // Трансферна вартість футболіста 
-	char contract[10]; // Термін контракту (обирається зі списку: 1 рік, 2 роки, 3 роки).
-	size_t kod; // Код гравця
+	char country[15]; // ГЄГ°Г ВїГ­Г 
+	char team_p[15]; // ГЄГ®Г¬Г Г­Г¤Г  ГЈГ°Г ГўГ¶Гї
+	size_t transfer_cost; // Г’Г°Г Г­Г±ГґГҐГ°Г­Г  ГўГ Г°ГІВіГ±ГІГј ГґГіГІГЎГ®Г«ВіГ±ГІГ  
+	char contract[10]; // Г’ГҐГ°Г¬ВіГ­ ГЄГ®Г­ГІГ°Г ГЄГІГі (Г®ГЎГЁГ°Г ВєГІГјГ±Гї Г§Ві Г±ГЇГЁГ±ГЄГі: 1 Г°ВіГЄ, 2 Г°Г®ГЄГЁ, 3 Г°Г®ГЄГЁ).
+	size_t kod; // ГЉГ®Г¤ ГЈГ°Г ГўГ¶Гї
 };
 
-// функція загрузочного індикатора
+// ГґГіГ­ГЄГ¶ВіГї Г§Г ГЈГ°ГіГ§Г®Г·Г­Г®ГЈГ® ВіГ­Г¤ГЁГЄГ ГІГ®Г°Г 
 void progress_bar(int percents) 
 {
 	int half = percents / 2;
@@ -42,14 +43,14 @@ void progress_bar(int percents)
 	fflush(stdout);
 }
 
-// функція локалізації
+// ГґГіГ­ГЄГ¶ВіГї Г«Г®ГЄГ Г«ВіГ§Г Г¶ВіВї
 void _ukr() 
 {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 }
 
-// Прототипи функцій
+// ГЏГ°Г®ГІГ®ГІГЁГЇГЁ ГґГіГ­ГЄГ¶ВіГ©
 void MENU();
 int Menu();
 int menu();
@@ -93,7 +94,7 @@ bool proverka_zapusy_file(team data);
 bool proverka_zapusy_file_1(player data);
 bool proverka_kod_zapus_file(team data);
 
-// шаблони для перевірки введених даних
+// ГёГ ГЎГ«Г®Г­ГЁ Г¤Г«Гї ГЇГҐГ°ГҐГўВіГ°ГЄГЁ ГўГўГҐГ¤ГҐГ­ГЁГµ Г¤Г Г­ГЁГµ
 regex regular_2("([0-2])");
 cmatch result_2;
 regex regular_3("([1-3])");
@@ -111,7 +112,7 @@ cmatch result_two_digit;
 regex regular_four_digit("[0-9]+[0-9]+[0-9]+[0-9]");
 cmatch result_four_digit;
 
-// Два файли: file - файл Команда, file_1 - файл Гравці
+// Г„ГўГ  ГґГ Г©Г«ГЁ: file - ГґГ Г©Г« ГЉГ®Г¬Г Г­Г¤Г , file_1 - ГґГ Г©Г« ГѓГ°Г ГўГ¶Ві
 FILE* file;
 FILE* file_1;
 
@@ -121,7 +122,7 @@ int main()
 	_ukr();
 	system("color F4");
 	printf("\n\n\n\n\n\n\n\n\n\n\n\n ");
-	_ukr(); cout << "\t\t\t\t\t Добро пожаловать до обліку даних футболістів FIFA! " << endl;
+	_ukr(); cout << "\t\t\t\t\t Г„Г®ГЎГ°Г® ГЇГ®Г¦Г Г«Г®ГўГ ГІГј Г¤Г® Г®ГЎГ«ВіГЄГі Г¤Г Г­ГЁГµ ГґГіГІГЎГ®Г«ВіГ±ГІВіГў FIFA! " << endl;
 	for (int i = 0; i <= 100; ++i) {
 		progress_bar(i);
 		Sleep(50);
@@ -131,7 +132,7 @@ int main()
 	return 0;
 }
 
-// функція на наявність ідентичного запису в файлі - Команди
+// ГґГіГ­ГЄГ¶ВіГї Г­Г  Г­Г ГїГўГ­ВіГ±ГІГј ВіГ¤ГҐГ­ГІГЁГ·Г­Г®ГЈГ® Г§Г ГЇГЁГ±Гі Гў ГґГ Г©Г«Ві - ГЉГ®Г¬Г Г­Г¤ГЁ
 bool proverka_zapusy_file(team data)
 {
 	team data1;
@@ -141,7 +142,7 @@ bool proverka_zapusy_file(team data)
 		if (data.kod == data1.kod)
 		{
 			fclose(file);
-			cout << "\t\tВведений запис існує в файлі!" << endl;
+			cout << "\t\tГ‚ГўГҐГ¤ГҐГ­ГЁГ© Г§Г ГЇГЁГ± ВіГ±Г­ГіВє Гў ГґГ Г©Г«Ві!" << endl;
 			return true;
 		}
 	};
@@ -149,14 +150,14 @@ bool proverka_zapusy_file(team data)
 	return false;
 }
 
-// функція - пауза
+// ГґГіГ­ГЄГ¶ВіГї - ГЇГ ГіГ§Г 
 void system_pause()
 {
-	cout << endl << "\t\tДля продовженя натисніть будь-яку клавішу...";
+	cout << endl << "\t\tГ„Г«Гї ГЇГ°Г®Г¤Г®ГўГ¦ГҐГ­Гї Г­Г ГІГЁГ±Г­ВіГІГј ГЎГіГ¤Гј-ГїГЄГі ГЄГ«Г ГўВіГёГі...";
 	_getch();
 }
 
-// функція головного меню
+// ГґГіГ­ГЄГ¶ВіГї ГЈГ®Г«Г®ГўГ­Г®ГЈГ® Г¬ГҐГ­Гѕ
 void MENU()
 {
 	int n, * pn = &n;
@@ -165,17 +166,17 @@ void MENU()
 		system("cls");
 		system("color F6");
 		cout << "\n\n\n\n\n\n";
-		_ukr(); cout << endl << "\t\t\t\t\t\tГоловне меню\n";
-		_ukr(); cout << endl << "\t1. Файл 'Команда'\n";
-		_ukr(); cout << endl << "\t2. Файл 'Гравці'\n";
-		_ukr(); cout << endl << "\t0. Вихід з програми";
+		_ukr(); cout << endl << "\t\t\t\t\t\tГѓГ®Г«Г®ГўГ­ГҐ Г¬ГҐГ­Гѕ\n";
+		_ukr(); cout << endl << "\t1. Г”Г Г©Г« 'ГЉГ®Г¬Г Г­Г¤Г '\n";
+		_ukr(); cout << endl << "\t2. Г”Г Г©Г« 'ГѓГ°Г ГўГ¶Ві'\n";
+		_ukr(); cout << endl << "\t0. Г‚ГЁГµВіГ¤ Г§ ГЇГ°Г®ГЈГ°Г Г¬ГЁ";
 
 		string _n;
 		
 		bool flag = 0;
 		do {
 			cin.ignore(cin.rdbuf()->in_avail());
-			_ukr(); cout << endl << "\n\tВаш вибiр - ";
+			_ukr(); cout << endl << "\n\tГ‚Г Гё ГўГЁГЎiГ° - ";
 			getline(cin, _n);
 			if (regex_match(_n.c_str(), result_2, regular_2))
 			{
@@ -184,7 +185,7 @@ void MENU()
 			}
 			else
 			{
-				_ukr(); cout << endl << "\t\tПомилка! Введення має бути цифровим і ніяким іншим, числа від 0 до 2!!!";
+				_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ ! Г‚ГўГҐГ¤ГҐГ­Г­Гї Г¬Г Вє ГЎГіГІГЁ Г¶ГЁГґГ°Г®ГўГЁГ¬ Ві Г­ВіГїГЄГЁГ¬ ВіГ­ГёГЁГ¬, Г·ГЁГ±Г«Г  ГўВіГ¤ 0 Г¤Г® 2!!!";
 			}
 		} while (!flag);
 
@@ -207,12 +208,12 @@ void MENU()
 		system("cls");
 		system("color F4");
 		cout << "\n\n\n\n\n\n";
-		_ukr(); cout << endl << "\t\t\t\t\t\tДо побачення!!! ";
-		_ukr(); cout << endl << "\t\t\t\tДякую за використання обліку даних футболістів FIFA!";
+		_ukr(); cout << endl << "\t\t\t\t\t\tГ„Г® ГЇГ®ГЎГ Г·ГҐГ­Г­Гї!!! ";
+		_ukr(); cout << endl << "\t\t\t\tГ„ГїГЄГіГѕ Г§Г  ГўГЁГЄГ®Г°ГЁГ±ГІГ Г­Г­Гї Г®ГЎГ«ВіГЄГі Г¤Г Г­ГЁГµ ГґГіГІГЎГ®Г«ВіГ±ГІВіГў FIFA!";
 	}
 }
 
-// функція меню файла - Команди
+// ГґГіГ­ГЄГ¶ВіГї Г¬ГҐГ­Гѕ ГґГ Г©Г«Г  - ГЉГ®Г¬Г Г­Г¤ГЁ
 int Menu()
 {
 	int n, * pn = &n;
@@ -223,22 +224,22 @@ int Menu()
 		system("color F9");
 		system("cls"); 
 		cout << "\n\n\n\n\n\n";
-		_ukr(); cout << endl << "\t\t\t\t\t\tГоловне меню файла 'Команда'\n";
-		_ukr(); cout << endl << "\t1. Створення нового файлу\n";
-		_ukr(); cout << endl << "\t2. Перегляд існуючого файлу\n";
-		_ukr(); cout << endl << "\t3. Додавання даних у файл\n";
-		_ukr(); cout << endl << "\t4. Редагування записів (як цілком, так і за окремими полями)\n";
-		_ukr(); cout << endl << "\t5. Видалення записів (за № п/п)\n";
-		_ukr(); cout << endl << "\t6. Сортування інформації (за двома ознаками: за вартістю та за країною)\n";
-		_ukr(); cout << endl << "\t7. Виконання запитів\n";
-		_ukr(); cout << endl << "\t0. Повернення до попереднього меню";
+		_ukr(); cout << endl << "\t\t\t\t\t\tГѓГ®Г«Г®ГўГ­ГҐ Г¬ГҐГ­Гѕ ГґГ Г©Г«Г  'ГЉГ®Г¬Г Г­Г¤Г '\n";
+		_ukr(); cout << endl << "\t1. Г‘ГІГўГ®Г°ГҐГ­Г­Гї Г­Г®ГўГ®ГЈГ® ГґГ Г©Г«Гі\n";
+		_ukr(); cout << endl << "\t2. ГЏГҐГ°ГҐГЈГ«ГїГ¤ ВіГ±Г­ГіГѕГ·Г®ГЈГ® ГґГ Г©Г«Гі\n";
+		_ukr(); cout << endl << "\t3. Г„Г®Г¤Г ГўГ Г­Г­Гї Г¤Г Г­ГЁГµ Гі ГґГ Г©Г«\n";
+		_ukr(); cout << endl << "\t4. ГђГҐГ¤Г ГЈГіГўГ Г­Г­Гї Г§Г ГЇГЁГ±ВіГў (ГїГЄ Г¶ВіГ«ГЄГ®Г¬, ГІГ ГЄ Ві Г§Г  Г®ГЄГ°ГҐГ¬ГЁГ¬ГЁ ГЇГ®Г«ГїГ¬ГЁ)\n";
+		_ukr(); cout << endl << "\t5. Г‚ГЁГ¤Г Г«ГҐГ­Г­Гї Г§Г ГЇГЁГ±ВіГў (Г§Г  В№ ГЇ/ГЇ)\n";
+		_ukr(); cout << endl << "\t6. Г‘Г®Г°ГІГіГўГ Г­Г­Гї ВіГ­ГґГ®Г°Г¬Г Г¶ВіВї (Г§Г  Г¤ГўГ®Г¬Г  Г®Г§Г­Г ГЄГ Г¬ГЁ: Г§Г  ГўГ Г°ГІВіГ±ГІГѕ ГІГ  Г§Г  ГЄГ°Г ВїГ­Г®Гѕ)\n";
+		_ukr(); cout << endl << "\t7. Г‚ГЁГЄГ®Г­Г Г­Г­Гї Г§Г ГЇГЁГІВіГў\n";
+		_ukr(); cout << endl << "\t0. ГЏГ®ГўГҐГ°Г­ГҐГ­Г­Гї Г¤Г® ГЇГ®ГЇГҐГ°ГҐГ¤Г­ГјГ®ГЈГ® Г¬ГҐГ­Гѕ";
 		
 		string _n;
 		
 		bool flag = 0;
 		do {
 			cin.ignore(cin.rdbuf()->in_avail());
-			_ukr(); cout << endl << "\n\tВаш вибiр - ";
+			_ukr(); cout << endl << "\n\tГ‚Г Гё ГўГЁГЎiГ° - ";
 			getline(cin, _n);
 			if (regex_match(_n.c_str(), result_7, regular_7))
 			{
@@ -247,7 +248,7 @@ int Menu()
 			}
 			else
 			{
-				_ukr(); cout << endl << "\t\tПомилка! Введення має бути цифровим і ніяким іншим, числа від 0 до 7 !!!";
+				_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ ! Г‚ГўГҐГ¤ГҐГ­Г­Гї Г¬Г Вє ГЎГіГІГЁ Г¶ГЁГґГ°Г®ГўГЁГ¬ Ві Г­ВіГїГЄГЁГ¬ ВіГ­ГёГЁГ¬, Г·ГЁГ±Г«Г  ГўВіГ¤ 0 Г¤Г® 7 !!!";
 			}
 		} while (!flag);
 
@@ -262,14 +263,14 @@ int Menu()
 			system("cls");
 			fopen_s(&file, "player.dat", "rb");
 			if (!file) {
-				_ukr(); cout << endl << "\n\t\tПомилка. Створіть файл!";
+				_ukr(); cout << endl << "\n\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‘ГІГўГ®Г°ВіГІГј ГґГ Г©Г«!";
 			}
 			else
 			{
 
 				if ((fread(&data, sizeof(team), 1, file)) == NULL)
 				{
-					_ukr(); cout << endl << "\n\t\tПомилка. Файл порожній!";
+					_ukr(); cout << endl << "\n\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г”Г Г©Г« ГЇГ®Г°Г®Г¦Г­ВіГ©!";
 					fclose(file);
 				}
 				else
@@ -292,7 +293,7 @@ int Menu()
 			fopen_s(&file, "player.dat", "rb");
 			if ((fread(&data, sizeof(team), 1, file)) == NULL)
 			{
-				_ukr(); cout << endl << "\n\t\tПомилка. Файл порожній!";
+				_ukr(); cout << endl << "\n\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г”Г Г©Г« ГЇГ®Г°Г®Г¦Г­ВіГ©!";
 			}
 			else fclose(file); 
 			menu_edit_element();
@@ -304,22 +305,22 @@ int Menu()
 			fopen_s(&file, "player.dat", "rb");
 			if ((fread(&data, sizeof(team), 1, file)) == NULL)
 			{
-				_ukr(); cout << endl << "\n\t\tПомилка. Файл порожній!";
+				_ukr(); cout << endl << "\n\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г”Г Г©Г« ГЇГ®Г°Г®Г¦Г­ВіГ©!";
 			}
 			else
 			{
 				fclose(file);
-				_ukr(); cout << endl << "\n\tФайл до видалення записів:\n\n";
+				_ukr(); cout << endl << "\n\tГ”Г Г©Г« Г¤Г® ГўГЁГ¤Г Г«ГҐГ­Г­Гї Г§Г ГЇГЁГ±ВіГў:\n\n";
 				review_file();
 				system_pause();
 				if (del_element() == true)
 				{
 					system("cls");
-					_ukr(); cout << endl << "\n\tФайл після видалення записів:\n";
+					_ukr(); cout << endl << "\n\tГ”Г Г©Г« ГЇВіГ±Г«Гї ГўГЁГ¤Г Г«ГҐГ­Г­Гї Г§Г ГЇГЁГ±ВіГў:\n";
 					review_file();
 				}
 				else {
-					_ukr(); cout << endl << "\n\t\tФайл не змінився!";
+					_ukr(); cout << endl << "\n\t\tГ”Г Г©Г« Г­ГҐ Г§Г¬ВіГ­ГЁГўГ±Гї!";
 				}
 			}
 
@@ -331,7 +332,7 @@ int Menu()
 			fopen_s(&file, "player.dat", "rb");
 			if ((fread(&data, sizeof(team), 1, file)) == NULL)
 			{
-				_ukr(); cout << endl << "\n\t\tПомилка. Файл порожній!";
+				_ukr(); cout << endl << "\n\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г”Г Г©Г« ГЇГ®Г°Г®Г¦Г­ВіГ©!";
 			}
 			else fclose(file);
 			menu_sort();
@@ -349,7 +350,7 @@ int Menu()
 	} while (*pn != 0);
 }
 
-// функція меню запитів
+// ГґГіГ­ГЄГ¶ВіГї Г¬ГҐГ­Гѕ Г§Г ГЇГЁГІВіГў
 int menu()
 {
 	team data;
@@ -358,25 +359,25 @@ int menu()
 		system("color F0");
 		system("cls");
 		cout << "\n\n\n\n\n\n";
-		_ukr(); cout << endl << "\t\t\t\tМеню запитів\n\n";
-		_ukr(); cout << endl << "\t1. Підрахувати кількість гравців, які знаходяться у основному файлі,";
-		_ukr(); cout << endl << "\tпо кожній статі\n";
-		_ukr(); cout << endl << "\t2. Виведення даних про гравців, у яких термін контракту дорівнює";
-		_ukr(); cout << endl << "\tзначенню введеному з клавіатури\n";
-		_ukr(); cout << endl << "\t3. Виведення даних про всіх гравців, громадянство яких було обрано";
-		_ukr(); cout << endl << "\tкористувачем\n";
-		_ukr(); cout << endl << "\t4. Підрахувати загальну вартість по кожному гравцю,";
-		_ukr(); cout << endl << "\tу якого є контракт\n";
-		_ukr(); cout << endl << "\t5. Знайти, де працює гравець/гравці,";
-		_ukr(); cout << endl << "\tза максимальною кількістю ігор\n";
-		_ukr(); cout << endl << "\t0. Повернення до попереднього меню";
+		_ukr(); cout << endl << "\t\t\t\tГЊГҐГ­Гѕ Г§Г ГЇГЁГІВіГў\n\n";
+		_ukr(); cout << endl << "\t1. ГЏВіГ¤Г°Г ГµГіГўГ ГІГЁ ГЄВіГ«ГјГЄВіГ±ГІГј ГЈГ°Г ГўГ¶ВіГў, ГїГЄВі Г§Г­Г ГµГ®Г¤ГїГІГјГ±Гї Гі Г®Г±Г­Г®ГўГ­Г®Г¬Гі ГґГ Г©Г«Ві,";
+		_ukr(); cout << endl << "\tГЇГ® ГЄГ®Г¦Г­ВіГ© Г±ГІГ ГІВі\n";
+		_ukr(); cout << endl << "\t2. Г‚ГЁГўГҐГ¤ГҐГ­Г­Гї Г¤Г Г­ГЁГµ ГЇГ°Г® ГЈГ°Г ГўГ¶ВіГў, Гі ГїГЄГЁГµ ГІГҐГ°Г¬ВіГ­ ГЄГ®Г­ГІГ°Г ГЄГІГі Г¤Г®Г°ВіГўГ­ГѕВє";
+		_ukr(); cout << endl << "\tГ§Г­Г Г·ГҐГ­Г­Гѕ ГўГўГҐГ¤ГҐГ­Г®Г¬Гі Г§ ГЄГ«Г ГўВіГ ГІГіГ°ГЁ\n";
+		_ukr(); cout << endl << "\t3. Г‚ГЁГўГҐГ¤ГҐГ­Г­Гї Г¤Г Г­ГЁГµ ГЇГ°Г® ГўГ±ВіГµ ГЈГ°Г ГўГ¶ВіГў, ГЈГ°Г®Г¬Г Г¤ГїГ­Г±ГІГўГ® ГїГЄГЁГµ ГЎГіГ«Г® Г®ГЎГ°Г Г­Г®";
+		_ukr(); cout << endl << "\tГЄГ®Г°ГЁГ±ГІГіГўГ Г·ГҐГ¬\n";
+		_ukr(); cout << endl << "\t4. ГЏВіГ¤Г°Г ГµГіГўГ ГІГЁ Г§Г ГЈГ Г«ГјГ­Гі ГўГ Г°ГІВіГ±ГІГј ГЇГ® ГЄГ®Г¦Г­Г®Г¬Гі ГЈГ°Г ГўГ¶Гѕ,";
+		_ukr(); cout << endl << "\tГі ГїГЄГ®ГЈГ® Вє ГЄГ®Г­ГІГ°Г ГЄГІ\n";
+		_ukr(); cout << endl << "\t5. Г‡Г­Г Г©ГІГЁ, Г¤ГҐ ГЇГ°Г Г¶ГѕВє ГЈГ°Г ГўГҐГ¶Гј/ГЈГ°Г ГўГ¶Ві,";
+		_ukr(); cout << endl << "\tГ§Г  Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­Г®Гѕ ГЄВіГ«ГјГЄВіГ±ГІГѕ ВіГЈГ®Г°\n";
+		_ukr(); cout << endl << "\t0. ГЏГ®ГўГҐГ°Г­ГҐГ­Г­Гї Г¤Г® ГЇГ®ГЇГҐГ°ГҐГ¤Г­ГјГ®ГЈГ® Г¬ГҐГ­Гѕ";
 
 		string _n;
 		
 		bool flag = 0;
 		do {
 			cin.ignore(cin.rdbuf()->in_avail());
-			_ukr(); cout << endl << "\n\tВаш вибiр - ";
+			_ukr(); cout << endl << "\n\tГ‚Г Гё ГўГЁГЎiГ° - ";
 			getline(cin, _n);
 			if (regex_match(_n.c_str(), result_5, regular_5))
 			{
@@ -385,7 +386,7 @@ int menu()
 			}
 			else
 			{
-				_ukr(); cout << endl << "\t\tПомилка! Введення має бути цифровим і ніяким іншим, числа від 0 до 5 !!!";
+				_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ ! Г‚ГўГҐГ¤ГҐГ­Г­Гї Г¬Г Вє ГЎГіГІГЁ Г¶ГЁГґГ°Г®ГўГЁГ¬ Ві Г­ВіГїГЄГЁГ¬ ВіГ­ГёГЁГ¬, Г·ГЁГ±Г«Г  ГўВіГ¤ 0 Г¤Г® 5 !!!";
 			}
 		} while (!flag);
 
@@ -396,7 +397,7 @@ int menu()
 			fopen_s(&file, "player.dat", "rb");
 			if ((fread(&data, sizeof(team), 1, file)) == NULL)
 			{
-				_ukr(); cout << endl << "\n\tПомилка. Файл порожній!";
+				_ukr(); cout << endl << "\n\tГЏГ®Г¬ГЁГ«ГЄГ . Г”Г Г©Г« ГЇГ®Г°Г®Г¦Г­ВіГ©!";
 			}
 			else fclose(file);
 			kol_sex_file_1();
@@ -407,7 +408,7 @@ int menu()
 			fopen_s(&file, "player.dat", "rb");
 			if ((fread(&data, sizeof(team), 1, file)) == NULL)
 			{
-				_ukr(); cout << endl << "\n\tПомилка. Файл порожній!";
+				_ukr(); cout << endl << "\n\tГЏГ®Г¬ГЁГ«ГЄГ . Г”Г Г©Г« ГЇГ®Г°Г®Г¦Г­ВіГ©!";
 			}
 			else fclose(file);
 			contract_file();
@@ -418,7 +419,7 @@ int menu()
 			fopen_s(&file, "player.dat", "rb");
 			if ((fread(&data, sizeof(team), 1, file)) == NULL)
 			{
-				_ukr(); cout << endl << "\n\tПомилка. Файл порожній!";
+				_ukr(); cout << endl << "\n\tГЏГ®Г¬ГЁГ«ГЄГ . Г”Г Г©Г« ГЇГ®Г°Г®Г¦Г­ВіГ©!";
 			}
 			else fclose(file);
 			nationality_file_1();
@@ -429,7 +430,7 @@ int menu()
 			fopen_s(&file, "player.dat", "rb");
 			if ((fread(&data, sizeof(team), 1, file)) == NULL)
 			{
-				_ukr(); cout << endl << "\n\tПомилка. Файл порожній!";
+				_ukr(); cout << endl << "\n\tГЏГ®Г¬ГЁГ«ГЄГ . Г”Г Г©Г« ГЇГ®Г°Г®Г¦Г­ВіГ©!";
 			}
 			else fclose(file);
 			total_cost_file_1();
@@ -440,7 +441,7 @@ int menu()
 			fopen_s(&file, "player.dat", "rb");
 			if ((fread(&data, sizeof(team), 1, file)) == NULL)
 			{
-				_ukr(); cout << endl << "\n\tПомилка. Файл порожній!";
+				_ukr(); cout << endl << "\n\tГЏГ®Г¬ГЁГ«ГЄГ . Г”Г Г©Г« ГЇГ®Г°Г®Г¦Г­ВіГ©!";
 			}
 			else fclose(file);
 			max_kol_games_file_1();
@@ -452,24 +453,24 @@ int menu()
 	} while (*pn != 0);
 }
 
-// функція запиту - підрахунок кількості по статі
+// ГґГіГ­ГЄГ¶ВіГї Г§Г ГЇГЁГІГі - ГЇВіГ¤Г°Г ГµГіГ­Г®ГЄ ГЄВіГ«ГјГЄГ®Г±ГІВі ГЇГ® Г±ГІГ ГІВі
 void kol_sex_file_1()
 {
 	player data;
 	size_t kol_sex_m(0), kol_sex_w(0);
-	_ukr(); cout << endl << "\t\tРезультати вашого запиту: \n\n";
+	_ukr(); cout << endl << "\t\tГђГҐГ§ГіГ«ГјГІГ ГІГЁ ГўГ ГёГ®ГЈГ® Г§Г ГЇГЁГІГі: \n\n";
 	fopen_s(&file_1, "player_1.dat", "rb");
 	while (fread(&data, sizeof(player), 1, file_1))
 	{
-		if (strcmp(data.sex, "Ч") == 0) kol_sex_m++;
-		if (strcmp(data.sex, "Ж") == 0) kol_sex_w++;
+		if (strcmp(data.sex, "Г—") == 0) kol_sex_m++;
+		if (strcmp(data.sex, "Г†") == 0) kol_sex_w++;
 	};
-	_ukr(); cout << "\t\tКількість гравців чоловічої статі -> " << kol_sex_m << endl;
-	_ukr(); cout << "\t\tКількість гравців жіночої статі -> " << kol_sex_w << endl;
+	_ukr(); cout << "\t\tГЉВіГ«ГјГЄВіГ±ГІГј ГЈГ°Г ГўГ¶ВіГў Г·Г®Г«Г®ГўВіГ·Г®Вї Г±ГІГ ГІВі -> " << kol_sex_m << endl;
+	_ukr(); cout << "\t\tГЉВіГ«ГјГЄВіГ±ГІГј ГЈГ°Г ГўГ¶ВіГў Г¦ВіГ­Г®Г·Г®Вї Г±ГІГ ГІВі -> " << kol_sex_w << endl;
 	fclose(file_1);
 }
 
-// функція запиту - знаходження по контракту
+// ГґГіГ­ГЄГ¶ВіГї Г§Г ГЇГЁГІГі - Г§Г­Г ГµГ®Г¤Г¦ГҐГ­Г­Гї ГЇГ® ГЄГ®Г­ГІГ°Г ГЄГІГі
 void contract_file()
 {
 	team data;
@@ -479,20 +480,20 @@ void contract_file()
 	char contr[10];
 
 	cin.ignore(cin.rdbuf()->in_avail());
-	cout << endl << "\t\tОберіть термін контракту, за яким необхідно знайти запис - ";
-	cout << endl << "\t\t1. 1 рік\n\t\t2. 2 роки\n\t\t3. 3 роки";
+	cout << endl << "\t\tГЋГЎГҐГ°ВіГІГј ГІГҐГ°Г¬ВіГ­ ГЄГ®Г­ГІГ°Г ГЄГІГі, Г§Г  ГїГЄГЁГ¬ Г­ГҐГ®ГЎГµВіГ¤Г­Г® Г§Г­Г Г©ГІГЁ Г§Г ГЇГЁГ± - ";
+	cout << endl << "\t\t1. 1 Г°ВіГЄ\n\t\t2. 2 Г°Г®ГЄГЁ\n\t\t3. 3 Г°Г®ГЄГЁ";
 
-	string _сhoice;
+	string _Г±hoice;
 	
 	bool flag1 = 0;
 	do {
 		cin.ignore(cin.rdbuf()->in_avail());
-		_ukr(); cout << endl << "\t\tВаш вибiр - ";
-		getline(cin, _сhoice);
-		if (regex_match(_сhoice.c_str(), result_3, regular_3))
+		_ukr(); cout << endl << "\t\tГ‚Г Гё ГўГЁГЎiГ° - ";
+		getline(cin, _Г±hoice);
+		if (regex_match(_Г±hoice.c_str(), result_3, regular_3))
 		{
 			flag1 = true;
-			choice = atoi(_сhoice.c_str());
+			choice = atoi(_Г±hoice.c_str());
 
 			if (choice == 1) strcpy_s(contr, "1");
 			else if (choice == 2) strcpy_s(contr, "2");
@@ -500,19 +501,19 @@ void contract_file()
 		}
 		else
 		{
-			_ukr(); cout << endl << "\t\tПомилка. Ви маєте можливість використовувати ТІЛЬКИ числа від 1 до 3!";
+			_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г’ВІГ‹ГњГЉГ€ Г·ГЁГ±Г«Г  ГўВіГ¤ 1 Г¤Г® 3!";
 		}
 
 	} while (!flag1);
 
 	system("cls");
-	_ukr(); cout << endl << "\t\tРезультати вашого запиту: \n\n";
+	_ukr(); cout << endl << "\t\tГђГҐГ§ГіГ«ГјГІГ ГІГЁ ГўГ ГёГ®ГЈГ® Г§Г ГЇГЁГІГі: \n\n";
 	cout << endl;
 
 	cout << "\t\t";
 	for (size_t i = 0; i <= 96; i++) cout << "-";
-	_ukr(); cout << "\n\t\t| Код |" << "         П.І.      |" << " Дата народження |" << " Стать |"
-		<< " KG |" << "  Команда  |" << " Амплуа |" << "   Громадянство  |" << endl;
+	_ukr(); cout << "\n\t\t| ГЉГ®Г¤ |" << "         ГЏ.ВІ.      |" << " Г„Г ГІГ  Г­Г Г°Г®Г¤Г¦ГҐГ­Г­Гї |" << " Г‘ГІГ ГІГј |"
+		<< " KG |" << "  ГЉГ®Г¬Г Г­Г¤Г   |" << " ГЂГ¬ГЇГ«ГіГ  |" << "   ГѓГ°Г®Г¬Г Г¤ГїГ­Г±ГІГўГ®  |" << endl;
 	cout << "\t\t";
 	for (size_t i = 0; i <= 96; i++) cout << "-";
 
@@ -547,15 +548,15 @@ void contract_file()
 	}
 	fclose(file_1);
 	cout << "\n\t\t";
-	for (size_t i = 0; i <= 96; i++) cout << "-"; /// кінець таблиці
+	for (size_t i = 0; i <= 96; i++) cout << "-"; /// ГЄВіГ­ГҐГ¶Гј ГІГ ГЎГ«ГЁГ¶Ві
 	if (flag == false)
 	{
 		system("cls");
-		cout << "\n\t\tНеобхідні записи не знайдено!" << endl;
+		cout << "\n\t\tГЌГҐГ®ГЎГµВіГ¤Г­Ві Г§Г ГЇГЁГ±ГЁ Г­ГҐ Г§Г­Г Г©Г¤ГҐГ­Г®!" << endl;
 	}
 }
 
-// функція запиту - знаходження по громадянству
+// ГґГіГ­ГЄГ¶ВіГї Г§Г ГЇГЁГІГі - Г§Г­Г ГµГ®Г¤Г¦ГҐГ­Г­Гї ГЇГ® ГЈГ°Г®Г¬Г Г¤ГїГ­Г±ГІГўГі
 void nationality_file_1()
 {
 	player data;
@@ -565,41 +566,41 @@ void nationality_file_1()
 	char national[15];
 
 	cin.ignore(cin.rdbuf()->in_avail());
-	cout << endl << "\t\tОберіть громадянство, за яким необхідно знайти запис - ";
-	cout << endl << "\t\t1. Україна\n\t\t2. Аргентина\n\t\t3. Іспанія";
+	cout << endl << "\t\tГЋГЎГҐГ°ВіГІГј ГЈГ°Г®Г¬Г Г¤ГїГ­Г±ГІГўГ®, Г§Г  ГїГЄГЁГ¬ Г­ГҐГ®ГЎГµВіГ¤Г­Г® Г§Г­Г Г©ГІГЁ Г§Г ГЇГЁГ± - ";
+	cout << endl << "\t\t1. Г“ГЄГ°Г ВїГ­Г \n\t\t2. ГЂГ°ГЈГҐГ­ГІГЁГ­Г \n\t\t3. ВІГ±ГЇГ Г­ВіГї";
 
-	string _сhoice;
+	string _Г±hoice;
 	
 	bool flag1 = 0;
 	do {
 		cin.ignore(cin.rdbuf()->in_avail());
-		_ukr(); cout << endl << "\t\tВаш вибiр - ";
-		getline(cin, _сhoice);
-		if (regex_match(_сhoice.c_str(), result_3, regular_3))
+		_ukr(); cout << endl << "\t\tГ‚Г Гё ГўГЁГЎiГ° - ";
+		getline(cin, _Г±hoice);
+		if (regex_match(_Г±hoice.c_str(), result_3, regular_3))
 		{
 			flag1 = true;
-			choice = atoi(_сhoice.c_str());
+			choice = atoi(_Г±hoice.c_str());
 
-			if (choice == 1) strcpy_s(national, "Україна");
-			else if (choice == 2) strcpy_s(national, "Аргентина");
-			else strcpy_s(national, "Іспанія");
+			if (choice == 1) strcpy_s(national, "Г“ГЄГ°Г ВїГ­Г ");
+			else if (choice == 2) strcpy_s(national, "ГЂГ°ГЈГҐГ­ГІГЁГ­Г ");
+			else strcpy_s(national, "ВІГ±ГЇГ Г­ВіГї");
 		}
 		else
 		{
-			_ukr(); cout << endl << "\t\tПомилка. Ви маєте можливість використовувати ТІЛЬКИ числа від 1 до 3!";
+			_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г’ВІГ‹ГњГЉГ€ Г·ГЁГ±Г«Г  ГўВіГ¤ 1 Г¤Г® 3!";
 		}
 
 	} while (!flag1);
 
 	system("cls");
-	_ukr(); cout << endl << "\t\tРезультати вашого запиту: \n\n";
+	_ukr(); cout << endl << "\t\tГђГҐГ§ГіГ«ГјГІГ ГІГЁ ГўГ ГёГ®ГЈГ® Г§Г ГЇГЁГІГі: \n\n";
 	cout << endl;
 
 	cout << "\t\t";
 	for (size_t i = 0; i <= 98; i++) cout << "-";
-	_ukr(); cout << "\n\t\t| Код |" << "         П.І.      |" << "  Країна  |" 
-				<< "  Команда  |" << " Амплуа |" << " Вартість(млн.євро) |"
-		<< " Термін контракту |" << endl;
+	_ukr(); cout << "\n\t\t| ГЉГ®Г¤ |" << "         ГЏ.ВІ.      |" << "  ГЉГ°Г ВїГ­Г   |" 
+				<< "  ГЉГ®Г¬Г Г­Г¤Г   |" << " ГЂГ¬ГЇГ«ГіГ  |" << " Г‚Г Г°ГІВіГ±ГІГј(Г¬Г«Г­.ВєГўГ°Г®) |"
+		<< " Г’ГҐГ°Г¬ВіГ­ ГЄГ®Г­ГІГ°Г ГЄГІГі |" << endl;
 	cout << "\t\t";
 	for (size_t i = 0; i <= 98; i++) cout << "-";
 
@@ -629,26 +630,26 @@ void nationality_file_1()
 	}
 	fclose(file_1);
 	cout << "\n\t\t";
-	for (size_t i = 0; i <= 98; i++) cout << "-"; /// кінець таблиці
+	for (size_t i = 0; i <= 98; i++) cout << "-"; /// ГЄВіГ­ГҐГ¶Гј ГІГ ГЎГ«ГЁГ¶Ві
 	if (flag == false)
 	{
 		system("cls");
-		cout << "\n\t\tНеобхідні записи не знайдено!" << endl;
+		cout << "\n\t\tГЌГҐГ®ГЎГµВіГ¤Г­Ві Г§Г ГЇГЁГ±ГЁ Г­ГҐ Г§Г­Г Г©Г¤ГҐГ­Г®!" << endl;
 	}
 }
 
-// функція запиту - підрахунку загальної вартості по гравцю
+// ГґГіГ­ГЄГ¶ВіГї Г§Г ГЇГЁГІГі - ГЇВіГ¤Г°Г ГµГіГ­ГЄГі Г§Г ГЈГ Г«ГјГ­Г®Вї ГўГ Г°ГІГ®Г±ГІВі ГЇГ® ГЈГ°Г ГўГ¶Гѕ
 void total_cost_file_1()
 {
 	player data;
 	team data1;
 	size_t total_transfer_cost;
 
-	_ukr(); cout << endl << "\t\tРезультат вашого запиту: \n\n\t\t";
+	_ukr(); cout << endl << "\t\tГђГҐГ§ГіГ«ГјГІГ ГІ ГўГ ГёГ®ГЈГ® Г§Г ГЇГЁГІГі: \n\n\t\t";
 	for (size_t i = 0; i <= 118; i++) cout << "-";
-	_ukr(); cout << "\n\t\t| Код |" << "         П.І.      |" << " Амплуа |";
-	_ukr(); cout << "  Країна  |" << "  Команда  |" << " Вартість(млн.євро) |" 
-		<< " Термін контракту |" <<  " Загальна вартість |" << endl;
+	_ukr(); cout << "\n\t\t| ГЉГ®Г¤ |" << "         ГЏ.ВІ.      |" << " ГЂГ¬ГЇГ«ГіГ  |";
+	_ukr(); cout << "  ГЉГ°Г ВїГ­Г   |" << "  ГЉГ®Г¬Г Г­Г¤Г   |" << " Г‚Г Г°ГІВіГ±ГІГј(Г¬Г«Г­.ВєГўГ°Г®) |" 
+		<< " Г’ГҐГ°Г¬ВіГ­ ГЄГ®Г­ГІГ°Г ГЄГІГі |" <<  " Г‡Г ГЈГ Г«ГјГ­Г  ГўГ Г°ГІВіГ±ГІГј |" << endl;
 	cout << "\t\t";
 	for (size_t i = 0; i <= 118; i++) cout << "-";
 
@@ -676,10 +677,10 @@ void total_cost_file_1()
 	}
 	fclose(file_1);
 	cout << "\n\t\t";
-	for (size_t i = 0; i <= 118; i++) cout << "-"; /// кінець таблиці
+	for (size_t i = 0; i <= 118; i++) cout << "-"; /// ГЄВіГ­ГҐГ¶Гј ГІГ ГЎГ«ГЁГ¶Ві
 }
 
-// функція запиту - знаходження де працює гравець
+// ГґГіГ­ГЄГ¶ВіГї Г§Г ГЇГЁГІГі - Г§Г­Г ГµГ®Г¤Г¦ГҐГ­Г­Гї Г¤ГҐ ГЇГ°Г Г¶ГѕВє ГЈГ°Г ГўГҐГ¶Гј
 void max_kol_games_file_1()
 {
 	player data;
@@ -687,10 +688,10 @@ void max_kol_games_file_1()
 	size_t num(0), max = 0;
 	bool flag = 0, flag1 = 0;
 
-	_ukr(); cout << endl << "\t\tРезультат вашого запиту: \n\t\t";
+	_ukr(); cout << endl << "\t\tГђГҐГ§ГіГ«ГјГІГ ГІ ГўГ ГёГ®ГЈГ® Г§Г ГЇГЁГІГі: \n\t\t";
 	for (size_t i = 0; i <= 49; i++) cout << "-";
-	_ukr(); cout << "\n\t\t| № |" << "         П.І.         |" << " MAX |";
-	_ukr(); cout << "    Команда    |" << endl;
+	_ukr(); cout << "\n\t\t| В№ |" << "         ГЏ.ВІ.         |" << " MAX |";
+	_ukr(); cout << "    ГЉГ®Г¬Г Г­Г¤Г     |" << endl;
 	cout << "\t\t";
 	for (size_t i = 0; i <= 49; i++) cout << "-";
 	fopen_s(&file_1, "player_1.dat", "rb");
@@ -729,24 +730,24 @@ void max_kol_games_file_1()
 	if (flag1 == 0)
 	{
 		system("cls");
-		_ukr(); cout << endl << "\t\tРезультат вашого запиту: \n\t\t";
-		_ukr(); cout << endl << "\t\tГравець з максимальною кількістю ігор - " << max
-			 << " ,не працює в жодній з команд!";
+		_ukr(); cout << endl << "\t\tГђГҐГ§ГіГ«ГјГІГ ГІ ГўГ ГёГ®ГЈГ® Г§Г ГЇГЁГІГі: \n\t\t";
+		_ukr(); cout << endl << "\t\tГѓГ°Г ГўГҐГ¶Гј Г§ Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­Г®Гѕ ГЄВіГ«ГјГЄВіГ±ГІГѕ ВіГЈГ®Г° - " << max
+			 << " ,Г­ГҐ ГЇГ°Г Г¶ГѕВє Гў Г¦Г®Г¤Г­ВіГ© Г§ ГЄГ®Г¬Г Г­Г¤!";
 	}
 	if (flag == 1)
 	{
 		cout << "\n\t\t";
-		for (size_t i = 0; i <= 49; i++) cout << "-"; /// кінець таблиці
+		for (size_t i = 0; i <= 49; i++) cout << "-"; /// ГЄВіГ­ГҐГ¶Гј ГІГ ГЎГ«ГЁГ¶Ві
 	}
 }
 
-// функція перегляду файла Команди
+// ГґГіГ­ГЄГ¶ВіГї ГЇГҐГ°ГҐГЈГ«ГїГ¤Гі ГґГ Г©Г«Г  ГЉГ®Г¬Г Г­Г¤ГЁ
 void review_file()
 {
 	int num = 0;
 	team data;
-	_table(); //// заголовок таблиці
-	cap_table();  //// шапка таблиці
+	_table(); //// Г§Г ГЈГ®Г«Г®ГўГ®ГЄ ГІГ ГЎГ«ГЁГ¶Ві
+	cap_table();  //// ГёГ ГЇГЄГ  ГІГ ГЎГ«ГЁГ¶Ві
 	
 	fopen_s(&file, "player.dat", "rb");
 	while (fread(&data, sizeof(team), 1, file))
@@ -760,62 +761,62 @@ void review_file()
 	}
 	fclose(file);
 	cout << "\n";
-	for (size_t i = 0; i <= 82; i++) cout << "-"; /// кінець таблиці
+	for (size_t i = 0; i <= 82; i++) cout << "-"; /// ГЄВіГ­ГҐГ¶Гј ГІГ ГЎГ«ГЁГ¶Ві
 }
 
-// функція заголовку таблиці - Команди
+// ГґГіГ­ГЄГ¶ВіГї Г§Г ГЈГ®Г«Г®ГўГЄГі ГІГ ГЎГ«ГЁГ¶Ві - ГЉГ®Г¬Г Г­Г¤ГЁ
 void _table()
 {
 	team data;
 	size_t total_kol(0), kol_ukrain(0), kol_argentin(0), kol_spania(0);
-	_ukr(); cout << "\t\t\t\t\tОблік даних футболістів FIFA!" << endl;
+	_ukr(); cout << "\t\t\t\t\tГЋГЎГ«ВіГЄ Г¤Г Г­ГЁГµ ГґГіГІГЎГ®Г«ВіГ±ГІВіГў FIFA!" << endl;
 
 	fopen_s(&file, "player.dat", "rb");
 	while (fread(&data, sizeof(team), 1, file))
 	{
 		total_kol++;
-		if (strcmp(data.country, "Україна") == 0) kol_ukrain++;
-		if (strcmp(data.country, "Аргентина") == 0) kol_argentin++;
-		if (strcmp(data.country, "Іспанія") == 0) kol_spania++;
+		if (strcmp(data.country, "Г“ГЄГ°Г ВїГ­Г ") == 0) kol_ukrain++;
+		if (strcmp(data.country, "ГЂГ°ГЈГҐГ­ГІГЁГ­Г ") == 0) kol_argentin++;
+		if (strcmp(data.country, "ВІГ±ГЇГ Г­ВіГї") == 0) kol_spania++;
 	};
-	_ukr(); cout << "\n\tКоротка інформація файла: \n\n";
-	_ukr(); cout << "\tКількість записів в файлі -> " << total_kol << endl;
-	_ukr(); cout << "\tКількість українців в файлі -> " << kol_ukrain << endl;
-	_ukr(); cout << "\tКількість аргентинців в файлі -> " << kol_argentin << endl;
-	_ukr(); cout << "\tКількість іспанців в файлі -> " << kol_spania << endl;
+	_ukr(); cout << "\n\tГЉГ®Г°Г®ГІГЄГ  ВіГ­ГґГ®Г°Г¬Г Г¶ВіГї ГґГ Г©Г«Г : \n\n";
+	_ukr(); cout << "\tГЉВіГ«ГјГЄВіГ±ГІГј Г§Г ГЇГЁГ±ВіГў Гў ГґГ Г©Г«Ві -> " << total_kol << endl;
+	_ukr(); cout << "\tГЉВіГ«ГјГЄВіГ±ГІГј ГіГЄГ°Г ВїГ­Г¶ВіГў Гў ГґГ Г©Г«Ві -> " << kol_ukrain << endl;
+	_ukr(); cout << "\tГЉВіГ«ГјГЄВіГ±ГІГј Г Г°ГЈГҐГ­ГІГЁГ­Г¶ВіГў Гў ГґГ Г©Г«Ві -> " << kol_argentin << endl;
+	_ukr(); cout << "\tГЉВіГ«ГјГЄВіГ±ГІГј ВіГ±ГЇГ Г­Г¶ВіГў Гў ГґГ Г©Г«Ві -> " << kol_spania << endl;
 	fclose(file);
 }
 
-// функція шапки таблиці - Команди
+// ГґГіГ­ГЄГ¶ВіГї ГёГ ГЇГЄГЁ ГІГ ГЎГ«ГЁГ¶Ві - ГЉГ®Г¬Г Г­Г¤ГЁ
 void cap_table() 
 {
 	for (size_t i = 0; i <= 82; i++) cout << "-";
-	_ukr(); cout << "\n| № п/п |" << "  Країна  |" << "    Команда    |";
-	_ukr(); cout << "  Вартість(млн.євро) |" << " Термін контракту |" << " Код |" << endl;
+	_ukr(); cout << "\n| В№ ГЇ/ГЇ |" << "  ГЉГ°Г ВїГ­Г   |" << "    ГЉГ®Г¬Г Г­Г¤Г     |";
+	_ukr(); cout << "  Г‚Г Г°ГІВіГ±ГІГј(Г¬Г«Г­.ВєГўГ°Г®) |" << " Г’ГҐГ°Г¬ВіГ­ ГЄГ®Г­ГІГ°Г ГЄГІГі |" << " ГЉГ®Г¤ |" << endl;
 	for (size_t i = 0; i <= 82; i++) cout << "-";
 }
 
-// функція створення нового файла Команди
+// ГґГіГ­ГЄГ¶ВіГї Г±ГІГўГ®Г°ГҐГ­Г­Гї Г­Г®ГўГ®ГЈГ® ГґГ Г©Г«Г  ГЉГ®Г¬Г Г­Г¤ГЁ
 void new_file()
 {
 	const char file_new[] = "player.dat";
 	fopen_s(&file, file_new, "rb");
 	if (!file)
 	{
-		_ukr(); cout << "\t\tСтворюємо новий файл." << endl;
+		_ukr(); cout << "\t\tГ‘ГІГўГ®Г°ГѕВєГ¬Г® Г­Г®ГўГЁГ© ГґГ Г©Г«." << endl;
 		fopen_s(&file, file_new, "wb");
-		_ukr(); cout << "\t\tФайл успішно створнено!" << endl;
+		_ukr(); cout << "\t\tГ”Г Г©Г« ГіГ±ГЇВіГёГ­Г® Г±ГІГўГ®Г°Г­ГҐГ­Г®!" << endl;
 		system_pause();
 	}
 	else
 	{
-		_ukr(); cout << "\t\tІснує файл з певними даними!" << endl;
+		_ukr(); cout << "\t\tВІГ±Г­ГіВє ГґГ Г©Г« Г§ ГЇГҐГўГ­ГЁГ¬ГЁ Г¤Г Г­ГЁГ¬ГЁ!" << endl;
 		system_pause();
 	}
 	fclose(file);
 }
 
-// функція видалення записів з файла Команди
+// ГґГіГ­ГЄГ¶ВіГї ГўГЁГ¤Г Г«ГҐГ­Г­Гї Г§Г ГЇГЁГ±ВіГў Г§ ГґГ Г©Г«Г  ГЉГ®Г¬Г Г­Г¤ГЁ
 bool del_element()
 {
 	team data;
@@ -835,7 +836,7 @@ bool del_element()
 	bool flag1 = 0;
 	do {
 		cin.ignore(cin.rdbuf()->in_avail());
-		_ukr(); cout << endl << "\n\tВведіть номер запису (№ п/п), який необхідно видалити - ";
+		_ukr(); cout << endl << "\n\tГ‚ГўГҐГ¤ВіГІГј Г­Г®Г¬ГҐГ° Г§Г ГЇГЁГ±Гі (В№ ГЇ/ГЇ), ГїГЄГЁГ© Г­ГҐГ®ГЎГµВіГ¤Г­Г® ГўГЁГ¤Г Г«ГЁГІГЁ - ";
 		getline(cin, _n_del);
 		if (regex_match(_n_del.c_str(), result_three_digit, regular_three_digit))
 		{
@@ -844,7 +845,7 @@ bool del_element()
 		}
 		else
 		{
-			_ukr(); cout << endl << "\t\tПомилка. Ви маєте можливість використовувати ТІЛЬКИ числа!";
+			_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г’ВІГ‹ГњГЉГ€ Г·ГЁГ±Г«Г !";
 		}
 
 	} while (!flag1);
@@ -852,8 +853,8 @@ bool del_element()
 
 	if (n_del > total_kol)
 	{
-		_ukr(); cout << endl << "\t\tПомилка. Введений номер запису перевищує кількість записів в файлі!";
-		_ukr(); cout << endl << "\t\tКількість записів в файлі -> " << total_kol << ".";
+		_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГўГҐГ¤ГҐГ­ГЁГ© Г­Г®Г¬ГҐГ° Г§Г ГЇГЁГ±Гі ГЇГҐГ°ГҐГўГЁГ№ГіВє ГЄВіГ«ГјГЄВіГ±ГІГј Г§Г ГЇГЁГ±ВіГў Гў ГґГ Г©Г«Ві!";
+		_ukr(); cout << endl << "\t\tГЉВіГ«ГјГЄВіГ±ГІГј Г§Г ГЇГЁГ±ВіГў Гў ГґГ Г©Г«Ві -> " << total_kol << ".";
 		return false;
 	}
 	else
@@ -876,7 +877,7 @@ bool del_element()
 	}
 }
 
-// функція перевірки коду гравця при редагуванні
+// ГґГіГ­ГЄГ¶ВіГї ГЇГҐГ°ГҐГўВіГ°ГЄГЁ ГЄГ®Г¤Гі ГЈГ°Г ГўГ¶Гї ГЇГ°ГЁ Г°ГҐГ¤Г ГЈГіГўГ Г­Г­Ві
 bool proverka_kod_zapus_file(team data)
 {
 	player data1;
@@ -893,7 +894,7 @@ bool proverka_kod_zapus_file(team data)
 	return false;
 }
 
-// функція редагування - цілком
+// ГґГіГ­ГЄГ¶ВіГї Г°ГҐГ¤Г ГЈГіГўГ Г­Г­Гї - Г¶ВіГ«ГЄГ®Г¬
 bool full_edit_element()
 {
 	team data;
@@ -913,7 +914,7 @@ bool full_edit_element()
 	do {
 		review_file();
 		cin.ignore(cin.rdbuf()->in_avail());
-		_ukr(); cout << endl << "\t\tВведіть номер запису (№ п/п), який необхідно редагувати - ";
+		_ukr(); cout << endl << "\t\tГ‚ГўГҐГ¤ВіГІГј Г­Г®Г¬ГҐГ° Г§Г ГЇГЁГ±Гі (В№ ГЇ/ГЇ), ГїГЄГЁГ© Г­ГҐГ®ГЎГµВіГ¤Г­Г® Г°ГҐГ¤Г ГЈГіГўГ ГІГЁ - ";
 		getline(cin, _n_edit);
 		if (regex_match(_n_edit.c_str(), result_three_digit, regular_three_digit))
 		{
@@ -922,15 +923,15 @@ bool full_edit_element()
 		}
 		else
 		{
-			_ukr(); cout << endl << "\t\tПомилка. Ви маєте можливість використовувати ТІЛЬКИ числа!";
+			_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г’ВІГ‹ГњГЉГ€ Г·ГЁГ±Г«Г !";
 		}
 
 	} while (!flag1);
 
 	if (n_edit > total_kol)
 	{
-		_ukr(); cout << endl << "\t\tПомилка. Введений номер запису перевищує кількість записів в файлі!";
-		_ukr(); cout << endl << "\t\tКількість записів в файлі -> " << total_kol << ".";
+		_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГўГҐГ¤ГҐГ­ГЁГ© Г­Г®Г¬ГҐГ° Г§Г ГЇГЁГ±Гі ГЇГҐГ°ГҐГўГЁГ№ГіВє ГЄВіГ«ГјГЄВіГ±ГІГј Г§Г ГЇГЁГ±ВіГў Гў ГґГ Г©Г«Ві!";
+		_ukr(); cout << endl << "\t\tГЉВіГ«ГјГЄВіГ±ГІГј Г§Г ГЇГЁГ±ВіГў Гў ГґГ Г©Г«Ві -> " << total_kol << ".";
 		return false;
 	}
 	else {
@@ -950,59 +951,59 @@ bool full_edit_element()
 		cout << '|' << right << setw(3) << data.kod << setw(3) << '|';
 
 		cout << "\n";
-		for (size_t i = 0; i <= 82; i++) cout << "-"; /// кінець таблиці
+		for (size_t i = 0; i <= 82; i++) cout << "-"; /// ГЄВіГ­ГҐГ¶Гј ГІГ ГЎГ«ГЁГ¶Ві
 
 		fclose(file);
 
-		_ukr(); cout << endl << "\t\tВи цей запис хотіли відредагувати ? Т/Y(так)/Н/N(ні) - ";
+		_ukr(); cout << endl << "\t\tГ‚ГЁ Г¶ГҐГ© Г§Г ГЇГЁГ± ГµГ®ГІВіГ«ГЁ ГўВіГ¤Г°ГҐГ¤Г ГЈГіГўГ ГІГЁ ? Г’/Y(ГІГ ГЄ)/ГЌ/N(Г­Ві) - ";
 		cin >> var;
 		cin.ignore(cin.rdbuf()->in_avail());
-		if (var == 'Т' || var == 'т' || var == 'Y' || var == 'y')
+		if (var == 'Г’' || var == 'ГІ' || var == 'Y' || var == 'y')
 		{
 			int choice;
-			_ukr(); cout << endl << "\t\t\tЛюбий користувачу, вводимо нові данні!" << endl;
+			_ukr(); cout << endl << "\t\t\tГ‹ГѕГЎГЁГ© ГЄГ®Г°ГЁГ±ГІГіГўГ Г·Гі, ГўГўГ®Г¤ГЁГ¬Г® Г­Г®ГўВі Г¤Г Г­Г­Ві!" << endl;
 
-			string _сhoice;
+			string _Г±hoice;
 			bool flag2 = 0;
-			_ukr(); cout << endl << "\t\tОберіть країну зі списку: ";
-			_ukr(); cout << endl << "\t\t1. Україна\n\t\t2. Аргентина\n\t\t3. Іспанія";
+			_ukr(); cout << endl << "\t\tГЋГЎГҐГ°ВіГІГј ГЄГ°Г ВїГ­Гі Г§Ві Г±ГЇГЁГ±ГЄГі: ";
+			_ukr(); cout << endl << "\t\t1. Г“ГЄГ°Г ВїГ­Г \n\t\t2. ГЂГ°ГЈГҐГ­ГІГЁГ­Г \n\t\t3. ВІГ±ГЇГ Г­ВіГї";
 			do {
 				cin.ignore(cin.rdbuf()->in_avail());
-				_ukr(); cout << endl << "\t\tВаш вибiр - ";
-				getline(cin, _сhoice);
-				if (regex_match(_сhoice.c_str(), result_3, regular_3))
+				_ukr(); cout << endl << "\t\tГ‚Г Гё ГўГЁГЎiГ° - ";
+				getline(cin, _Г±hoice);
+				if (regex_match(_Г±hoice.c_str(), result_3, regular_3))
 				{
 					flag2 = true;
-					choice = atoi(_сhoice.c_str());
+					choice = atoi(_Г±hoice.c_str());
 
-					if (choice == 1) strcpy_s(data.country, "Україна");
-					else if (choice == 2) strcpy_s(data.country, "Аргентина");
-					else strcpy_s(data.country, "Іспанія");
+					if (choice == 1) strcpy_s(data.country, "Г“ГЄГ°Г ВїГ­Г ");
+					else if (choice == 2) strcpy_s(data.country, "ГЂГ°ГЈГҐГ­ГІГЁГ­Г ");
+					else strcpy_s(data.country, "ВІГ±ГЇГ Г­ВіГї");
 				}
 				else
 				{
-					_ukr(); cout << endl << "\t\tПомилка. Ви маєте можливість використовувати ТІЛЬКИ числа від 1 до 3!";
+					_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г’ВІГ‹ГњГЉГ€ Г·ГЁГ±Г«Г  ГўВіГ¤ 1 Г¤Г® 3!";
 				}
 
 			} while (!flag2);
 
 			string _team;
-			regex regular3("([Є-ЯҐє-яґ]{4,13})");
+			regex regular3("([ВЄ-ГџВҐВє-ГїВґ]{4,13})");
 			cmatch result3;
 			bool flag3 = 0;
 			do {
 				cin.ignore(cin.rdbuf()->in_avail());
-				_ukr(); cout << endl << "\t\tВедіть назву команди від 4 до 13 символів (Наприклад: Шахтар): ";
+				_ukr(); cout << endl << "\t\tГ‚ГҐГ¤ВіГІГј Г­Г Г§ГўГі ГЄГ®Г¬Г Г­Г¤ГЁ ГўВіГ¤ 4 Г¤Г® 13 Г±ГЁГ¬ГўГ®Г«ВіГў (ГЌГ ГЇГ°ГЁГЄГ«Г Г¤: ГГ ГµГІГ Г°): ";
 				getline(cin, _team);
 				if (regex_match(_team.c_str(), result3, regular3))
 				{
 					flag3 = 1;
-					_ukr(); cout << endl << "\t\tВаша назва команди виглядає так - ФК " << _team;
+					_ukr(); cout << endl << "\t\tГ‚Г ГёГ  Г­Г Г§ГўГ  ГЄГ®Г¬Г Г­Г¤ГЁ ГўГЁГЈГ«ГїГ¤Г Вє ГІГ ГЄ - Г”ГЉ " << _team;
 					strcpy_s(data.team_p, _team.c_str());
 				}
 				else
 				{
-					_ukr(); cout << endl << "\t\tПомилка! Формат введення має бути таким: 'Шахтар' !!";
+					_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ ! Г”Г®Г°Г¬Г ГІ ГўГўГҐГ¤ГҐГ­Г­Гї Г¬Г Вє ГЎГіГІГЁ ГІГ ГЄГЁГ¬: 'ГГ ГµГІГ Г°' !!";
 				}
 			} while (!flag3);
 
@@ -1010,13 +1011,13 @@ bool full_edit_element()
 			bool flag4 = 0;
 			do {
 				cin.ignore(cin.rdbuf()->in_avail());
-				_ukr(); cout << endl << "\t\tВедіть трансферну вартість футболіста (в млн.євро від 1 до 400): ";
+				_ukr(); cout << endl << "\t\tГ‚ГҐГ¤ВіГІГј ГІГ°Г Г­Г±ГґГҐГ°Г­Гі ГўГ Г°ГІВіГ±ГІГј ГґГіГІГЎГ®Г«ВіГ±ГІГ  (Гў Г¬Г«Г­.ВєГўГ°Г® ГўВіГ¤ 1 Г¤Г® 400): ";
 				getline(cin, _transfer_cost);
 				if (regex_match(_transfer_cost.c_str(), result_three_digit, regular_three_digit))
 				{
 					 
 					if (atoi(_transfer_cost.c_str()) < 1 || atoi(_transfer_cost.c_str()) > 400) {
-						_ukr(); cout << endl << "\t\tПомилка. Ви маєте можливість використовувати числа від 1 до 400!";
+						_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г·ГЁГ±Г«Г  ГўВіГ¤ 1 Г¤Г® 400!";
 					}
 					else {
 						flag4 = true;
@@ -1025,22 +1026,22 @@ bool full_edit_element()
 				}
 				else 
 				{
-					_ukr(); cout << endl << "\t\tПомилка. Ви маєте можливість використовувати ТІЛЬКИ числа від 1 до 400!";
+					_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г’ВІГ‹ГњГЉГ€ Г·ГЁГ±Г«Г  ГўВіГ¤ 1 Г¤Г® 400!";
 				}
 			} while (!flag4);
 
-			string _сhoice1;
+			string _Г±hoice1;
 			bool flag5 = 0;
-			cout << endl << "\t\tОберіть термін контракту  зі списку: ";
-			cout << endl << "\t\t1. 1 рік\n\t\t2. 2 роки\n\t\t3. 3 роки";
+			cout << endl << "\t\tГЋГЎГҐГ°ВіГІГј ГІГҐГ°Г¬ВіГ­ ГЄГ®Г­ГІГ°Г ГЄГІГі  Г§Ві Г±ГЇГЁГ±ГЄГі: ";
+			cout << endl << "\t\t1. 1 Г°ВіГЄ\n\t\t2. 2 Г°Г®ГЄГЁ\n\t\t3. 3 Г°Г®ГЄГЁ";
 			do {
 				cin.ignore(cin.rdbuf()->in_avail());
-				_ukr(); cout << endl << "\t\tВаш вибiр - ";
-				getline(cin, _сhoice1);
-				if (regex_match(_сhoice1.c_str(), result_3, regular_3))
+				_ukr(); cout << endl << "\t\tГ‚Г Гё ГўГЁГЎiГ° - ";
+				getline(cin, _Г±hoice1);
+				if (regex_match(_Г±hoice1.c_str(), result_3, regular_3))
 				{
 					flag5 = true;
-					choice = atoi(_сhoice1.c_str());
+					choice = atoi(_Г±hoice1.c_str());
 
 					if (choice == 1) strcpy_s(data.contract, "1");
 					else if (choice == 2) strcpy_s(data.contract, "2");
@@ -1048,31 +1049,31 @@ bool full_edit_element()
 				}
 				else
 				{
-					_ukr(); cout << endl << "\t\tПомилка. Ви маєте можливість використовувати ТІЛЬКИ числа від 1 до 3!";
+					_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г’ВІГ‹ГњГЉГ€ Г·ГЁГ±Г«Г  ГўВіГ¤ 1 Г¤Г® 3!";
 				}
 
 			} while (!flag5);
 
-			string _сhoice2;
+			string _Г±hoice2;
 			bool flag6 = 0;
 			
 			do {
 				cin.ignore(cin.rdbuf()->in_avail());
-				_ukr(); cout << endl << "\t\tВедіть код гравця (0 - на продажі): ";
-				getline(cin, _сhoice2);
-				if (regex_match(_сhoice2.c_str(), result_three_digit, regular_three_digit))
+				_ukr(); cout << endl << "\t\tГ‚ГҐГ¤ВіГІГј ГЄГ®Г¤ ГЈГ°Г ГўГ¶Гї (0 - Г­Г  ГЇГ°Г®Г¤Г Г¦Ві): ";
+				getline(cin, _Г±hoice2);
+				if (regex_match(_Г±hoice2.c_str(), result_three_digit, regular_three_digit))
 				{
 					flag6 = true;
-					data.kod = atoi(_сhoice2.c_str());
+					data.kod = atoi(_Г±hoice2.c_str());
 					if (proverka_kod_zapus_file(data) == false)
 					{
 						flag6 = 0;
-						_ukr(); cout << endl << "\t\tПомилка. Не вірне редагування коду, такого гравця з веденним кодом - не існує!";
+						_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . ГЌГҐ ГўВіГ°Г­ГҐ Г°ГҐГ¤Г ГЈГіГўГ Г­Г­Гї ГЄГ®Г¤Гі, ГІГ ГЄГ®ГЈГ® ГЈГ°Г ГўГ¶Гї Г§ ГўГҐГ¤ГҐГ­Г­ГЁГ¬ ГЄГ®Г¤Г®Г¬ - Г­ГҐ ВіГ±Г­ГіВє!";
 					}
 				}
 				else
 				{
-					_ukr(); cout << endl << "\t\tПомилка. Ви маєте можливість використовувати ТІЛЬКИ числа!";
+					_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г’ВІГ‹ГњГЉГ€ Г·ГЁГ±Г«Г !";
 				}
 			} while (!flag6);
 
@@ -1087,11 +1088,11 @@ bool full_edit_element()
 		}
 		else
 		{
-			if (var == 'Н' || var == 'н' || var == 'N' || var == 'n')
+			if (var == 'ГЌ' || var == 'Г­' || var == 'N' || var == 'n')
 			{
-				_ukr(); cout << endl << "\t\tСпробуйте спочатку!" << endl;
+				_ukr(); cout << endl << "\t\tГ‘ГЇГ°Г®ГЎГіГ©ГІГҐ Г±ГЇГ®Г·Г ГІГЄГі!" << endl;
 			}
-			else _ukr(); cout << endl << "\t\tПомилка!!!";
+			else _ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ !!!";
 
 			return false;
 		}
@@ -1099,7 +1100,7 @@ bool full_edit_element()
 	
 }
 
-// функція редагування за окремими полями
+// ГґГіГ­ГЄГ¶ВіГї Г°ГҐГ¤Г ГЈГіГўГ Г­Г­Гї Г§Г  Г®ГЄГ°ГҐГ¬ГЁГ¬ГЁ ГЇГ®Г«ГїГ¬ГЁ
 bool not_full_edit_element()
 {
 	team data;
@@ -1120,7 +1121,7 @@ bool not_full_edit_element()
 	do {
 		review_file();
 		cin.ignore(cin.rdbuf()->in_avail());
-		_ukr(); cout << endl << "\t\tВведіть номер запису (№ п/п), який необхідно редагувати - ";
+		_ukr(); cout << endl << "\t\tГ‚ГўГҐГ¤ВіГІГј Г­Г®Г¬ГҐГ° Г§Г ГЇГЁГ±Гі (В№ ГЇ/ГЇ), ГїГЄГЁГ© Г­ГҐГ®ГЎГµВіГ¤Г­Г® Г°ГҐГ¤Г ГЈГіГўГ ГІГЁ - ";
 		getline(cin, _n_edit);
 		if (regex_match(_n_edit.c_str(), result_three_digit, regular_three_digit))
 		{
@@ -1129,15 +1130,15 @@ bool not_full_edit_element()
 		}
 		else
 		{
-			_ukr(); cout << endl << "\t\tПомилка. Ви маєте можливість використовувати ТІЛЬКИ числа!";
+			_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г’ВІГ‹ГњГЉГ€ Г·ГЁГ±Г«Г !";
 		}
 
 	} while (!flag1);
 
 	if (n_edit > total_kol)
 	{
-		_ukr(); cout << endl << "\t\tПомилка. Введений номер запису перевищує кількість записів в файлі!";
-		_ukr(); cout << endl << "\t\tКількість записів в файлі -> " << total_kol << ".";
+		_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГўГҐГ¤ГҐГ­ГЁГ© Г­Г®Г¬ГҐГ° Г§Г ГЇГЁГ±Гі ГЇГҐГ°ГҐГўГЁГ№ГіВє ГЄВіГ«ГјГЄВіГ±ГІГј Г§Г ГЇГЁГ±ВіГў Гў ГґГ Г©Г«Ві!";
+		_ukr(); cout << endl << "\t\tГЉВіГ«ГјГЄВіГ±ГІГј Г§Г ГЇГЁГ±ВіГў Гў ГґГ Г©Г«Ві -> " << total_kol << ".";
 		return false;
 	}
 	else {
@@ -1157,30 +1158,30 @@ bool not_full_edit_element()
 		cout << '|' << right << setw(3) << data.kod << setw(3) << '|';
 
 		cout << "\n";
-		for (size_t i = 0; i <= 82; i++) cout << "-"; /// кінець таблиці
+		for (size_t i = 0; i <= 82; i++) cout << "-"; /// ГЄВіГ­ГҐГ¶Гј ГІГ ГЎГ«ГЁГ¶Ві
 		fclose(file);
 
-		_ukr(); cout << endl << "\t\tВи цей запис хотіли відредагувати ? Т/Y(так)/Н/N(ні) - ";
+		_ukr(); cout << endl << "\t\tГ‚ГЁ Г¶ГҐГ© Г§Г ГЇГЁГ± ГµГ®ГІВіГ«ГЁ ГўВіГ¤Г°ГҐГ¤Г ГЈГіГўГ ГІГЁ ? Г’/Y(ГІГ ГЄ)/ГЌ/N(Г­Ві) - ";
 		cin >> var;
 		cin.ignore();
-		if (var == 'Т' || var == 'т' || var == 'Y' || var == 'y')
+		if (var == 'Г’' || var == 'ГІ' || var == 'Y' || var == 'y')
 		{
 			do
 			{
 				system("cls");
-				_ukr(); cout << endl << "\tПоля які ви можете відредагувати:\n";
-				_ukr(); cout << endl << "\t1. Країна\n";
-				_ukr(); cout << endl << "\t2. Команда\n";
-				_ukr(); cout << endl << "\t3. Вартість в млн.євро\n";
-				_ukr(); cout << endl << "\t4. Термін контракту\n";
-				_ukr(); cout << endl << "\t5. Код гравця\n";
-				_ukr(); cout << endl << "\t0. Повернення назад";
+				_ukr(); cout << endl << "\tГЏГ®Г«Гї ГїГЄВі ГўГЁ Г¬Г®Г¦ГҐГІГҐ ГўВіГ¤Г°ГҐГ¤Г ГЈГіГўГ ГІГЁ:\n";
+				_ukr(); cout << endl << "\t1. ГЉГ°Г ВїГ­Г \n";
+				_ukr(); cout << endl << "\t2. ГЉГ®Г¬Г Г­Г¤Г \n";
+				_ukr(); cout << endl << "\t3. Г‚Г Г°ГІВіГ±ГІГј Гў Г¬Г«Г­.ВєГўГ°Г®\n";
+				_ukr(); cout << endl << "\t4. Г’ГҐГ°Г¬ВіГ­ ГЄГ®Г­ГІГ°Г ГЄГІГі\n";
+				_ukr(); cout << endl << "\t5. ГЉГ®Г¤ ГЈГ°Г ГўГ¶Гї\n";
+				_ukr(); cout << endl << "\t0. ГЏГ®ГўГҐГ°Г­ГҐГ­Г­Гї Г­Г Г§Г Г¤";
 
 				string _n;
 				bool flag2 = 0;
 				do {
 					cin.ignore(cin.rdbuf()->in_avail());
-					_ukr(); cout << endl << "\n\tВаш вибiр - ";
+					_ukr(); cout << endl << "\n\tГ‚Г Гё ГўГЁГЎiГ° - ";
 					getline(cin, _n);
 					if (regex_match(_n.c_str(), result_5, regular_5))
 					{
@@ -1189,23 +1190,23 @@ bool not_full_edit_element()
 					}
 					else
 					{
-						_ukr(); cout << endl << "\t\tПомилка. Ви маєте можливість використовувати ТІЛЬКИ числа від 0 до 5!";
+						_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г’ВІГ‹ГњГЉГ€ Г·ГЁГ±Г«Г  ГўВіГ¤ 0 Г¤Г® 5!";
 					}
 
 				} while (!flag2);
 
-				string _сhoice;
+				string _Г±hoice;
 				bool flag3 = 0;
 
 				string _team;
-				regex regular4("([Є-ЯҐє-яґ]{4,13})");
+				regex regular4("([ВЄ-ГџВҐВє-ГїВґ]{4,13})");
 				cmatch result4;
 				bool flag4 = 0;
 
-				string _сhoice1;
+				string _Г±hoice1;
 				bool flag5 = 0;
 
-				string _сhoice2;
+				string _Г±hoice2;
 				bool flag6 = 0;
 
 				string _transfer_cost;
@@ -1216,26 +1217,26 @@ bool not_full_edit_element()
 				case 1:
 					system("cls");
 
-					_ukr(); cout << endl << "\t\t\tЛюбий користувачу, вводимо нові данні данного поля!" << endl;
+					_ukr(); cout << endl << "\t\t\tГ‹ГѕГЎГЁГ© ГЄГ®Г°ГЁГ±ГІГіГўГ Г·Гі, ГўГўГ®Г¤ГЁГ¬Г® Г­Г®ГўВі Г¤Г Г­Г­Ві Г¤Г Г­Г­Г®ГЈГ® ГЇГ®Г«Гї!" << endl;
 
-					_ukr(); cout << endl << "\t\tОберіть країну зі списку: ";
-					_ukr(); cout << endl << "\t\t1. Україна\n\t\t2. Аргентина\n\t\t3. Іспанія";
+					_ukr(); cout << endl << "\t\tГЋГЎГҐГ°ВіГІГј ГЄГ°Г ВїГ­Гі Г§Ві Г±ГЇГЁГ±ГЄГі: ";
+					_ukr(); cout << endl << "\t\t1. Г“ГЄГ°Г ВїГ­Г \n\t\t2. ГЂГ°ГЈГҐГ­ГІГЁГ­Г \n\t\t3. ВІГ±ГЇГ Г­ВіГї";
 					do {
 						cin.ignore(cin.rdbuf()->in_avail());
-						_ukr(); cout << endl << "\t\tВаш вибiр - ";
-						getline(cin, _сhoice);
-						if (regex_match(_сhoice.c_str(), result_3, regular_3))
+						_ukr(); cout << endl << "\t\tГ‚Г Гё ГўГЁГЎiГ° - ";
+						getline(cin, _Г±hoice);
+						if (regex_match(_Г±hoice.c_str(), result_3, regular_3))
 						{
 							flag3 = true;
-							choice = atoi(_сhoice.c_str());
+							choice = atoi(_Г±hoice.c_str());
 
-							if (choice == 1) strcpy_s(data.country, "Україна");
-							else if (choice == 2) strcpy_s(data.country, "Аргентина");
-							else strcpy_s(data.country, "Іспанія");
+							if (choice == 1) strcpy_s(data.country, "Г“ГЄГ°Г ВїГ­Г ");
+							else if (choice == 2) strcpy_s(data.country, "ГЂГ°ГЈГҐГ­ГІГЁГ­Г ");
+							else strcpy_s(data.country, "ВІГ±ГЇГ Г­ВіГї");
 						}
 						else
 						{
-							_ukr(); cout << endl << "\t\tПомилка. Ви маєте можливість використовувати ТІЛЬКИ числа від 1 до 3!";
+							_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г’ВІГ‹ГњГЉГ€ Г·ГЁГ±Г«Г  ГўВіГ¤ 1 Г¤Г® 3!";
 						}
 
 					} while (!flag3);
@@ -1252,21 +1253,21 @@ bool not_full_edit_element()
 				case 2:
 					system("cls");
 
-					_ukr(); cout << endl << "\t\t\tЛюбий користувачу, вводимо нові данні данного поля!" << endl;
+					_ukr(); cout << endl << "\t\t\tГ‹ГѕГЎГЁГ© ГЄГ®Г°ГЁГ±ГІГіГўГ Г·Гі, ГўГўГ®Г¤ГЁГ¬Г® Г­Г®ГўВі Г¤Г Г­Г­Ві Г¤Г Г­Г­Г®ГЈГ® ГЇГ®Г«Гї!" << endl;
 					do {
 						cin.ignore(cin.rdbuf()->in_avail());
-						_ukr(); cout << endl << "\t\tВедіть назву команди не більше 13 символів (Наприклад: Шахтар): ";
+						_ukr(); cout << endl << "\t\tГ‚ГҐГ¤ВіГІГј Г­Г Г§ГўГі ГЄГ®Г¬Г Г­Г¤ГЁ Г­ГҐ ГЎВіГ«ГјГёГҐ 13 Г±ГЁГ¬ГўГ®Г«ВіГў (ГЌГ ГЇГ°ГЁГЄГ«Г Г¤: ГГ ГµГІГ Г°): ";
 						getline(cin, _team);
 						if (regex_match(_team.c_str(), result4, regular4))
 						{
 							flag4 = 1;
-							_ukr(); cout << endl << "\t\tВаша назва команди виглядає так - ФК " << _team;
+							_ukr(); cout << endl << "\t\tГ‚Г ГёГ  Г­Г Г§ГўГ  ГЄГ®Г¬Г Г­Г¤ГЁ ГўГЁГЈГ«ГїГ¤Г Вє ГІГ ГЄ - Г”ГЉ " << _team;
 							strcpy_s(data.team_p, _team.c_str());
 
 						}
 						else
 						{
-							_ukr(); cout << endl << "\t\tПомилка! Формат введення має бути таким: 'Шахтар' !!";
+							_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ ! Г”Г®Г°Г¬Г ГІ ГўГўГҐГ¤ГҐГ­Г­Гї Г¬Г Вє ГЎГіГІГЁ ГІГ ГЄГЁГ¬: 'ГГ ГµГІГ Г°' !!";
 						}
 					} while (!flag4);
 
@@ -1284,13 +1285,13 @@ bool not_full_edit_element()
 
 					do {
 						cin.ignore(cin.rdbuf()->in_avail());
-						_ukr(); cout << endl << "\t\tВедіть трансферну вартість футболіста (в млн.євро від 1 до 400): ";
+						_ukr(); cout << endl << "\t\tГ‚ГҐГ¤ВіГІГј ГІГ°Г Г­Г±ГґГҐГ°Г­Гі ГўГ Г°ГІВіГ±ГІГј ГґГіГІГЎГ®Г«ВіГ±ГІГ  (Гў Г¬Г«Г­.ВєГўГ°Г® ГўВіГ¤ 1 Г¤Г® 400): ";
 						getline(cin, _transfer_cost);
 						if (regex_match(_transfer_cost.c_str(), result_three_digit, regular_three_digit))
 						{
 
 							if (atoi(_transfer_cost.c_str()) < 1 || atoi(_transfer_cost.c_str()) > 400) {
-								_ukr(); cout << endl << "\t\tПомилка. Ви маєте можливість використовувати числа від 1 до 400!";
+								_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г·ГЁГ±Г«Г  ГўВіГ¤ 1 Г¤Г® 400!";
 							}
 							else {
 								flag7 = true;
@@ -1299,7 +1300,7 @@ bool not_full_edit_element()
 						}
 						else
 						{
-							_ukr(); cout << endl << "\t\tПомилка. Ви маєте можливість використовувати ТІЛЬКИ числа від 1 до 400!";
+							_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г’ВІГ‹ГњГЉГ€ Г·ГЁГ±Г«Г  ГўВіГ¤ 1 Г¤Г® 400!";
 						}
 					} while (!flag7);
 
@@ -1314,18 +1315,18 @@ bool not_full_edit_element()
 				case 4:
 					system("cls");
 
-					_ukr(); cout << endl << "\t\t\tЛюбий користувачу, вводимо нові данні данного поля!" << endl;
+					_ukr(); cout << endl << "\t\t\tГ‹ГѕГЎГЁГ© ГЄГ®Г°ГЁГ±ГІГіГўГ Г·Гі, ГўГўГ®Г¤ГЁГ¬Г® Г­Г®ГўВі Г¤Г Г­Г­Ві Г¤Г Г­Г­Г®ГЈГ® ГЇГ®Г«Гї!" << endl;
 
-					cout << endl << "\t\tОберіть термін контракту  зі списку: ";
-					cout << endl << "\t\t1. 1 рік\n\t\t2. 2 роки\n\t\t3. 3 роки";
+					cout << endl << "\t\tГЋГЎГҐГ°ВіГІГј ГІГҐГ°Г¬ВіГ­ ГЄГ®Г­ГІГ°Г ГЄГІГі  Г§Ві Г±ГЇГЁГ±ГЄГі: ";
+					cout << endl << "\t\t1. 1 Г°ВіГЄ\n\t\t2. 2 Г°Г®ГЄГЁ\n\t\t3. 3 Г°Г®ГЄГЁ";
 					do {
 						cin.ignore(cin.rdbuf()->in_avail());
-						_ukr(); cout << endl << "\t\tВаш вибiр - ";
-						getline(cin, _сhoice1);
-						if (regex_match(_сhoice1.c_str(), result_3, regular_3))
+						_ukr(); cout << endl << "\t\tГ‚Г Гё ГўГЁГЎiГ° - ";
+						getline(cin, _Г±hoice1);
+						if (regex_match(_Г±hoice1.c_str(), result_3, regular_3))
 						{
 							flag5 = true;
-							choice = atoi(_сhoice1.c_str());
+							choice = atoi(_Г±hoice1.c_str());
 
 							if (choice == 1) strcpy_s(data.contract, "1");
 							else if (choice == 2) strcpy_s(data.contract, "2");
@@ -1333,7 +1334,7 @@ bool not_full_edit_element()
 						}
 						else
 						{
-							_ukr(); cout << endl << "\t\tПомилка. Ви маєте можливість використовувати ТІЛЬКИ числа від 1 до 3!";
+							_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г’ВІГ‹ГњГЉГ€ Г·ГЁГ±Г«Г  ГўВіГ¤ 1 Г¤Г® 3!";
 						}
 
 					} while (!flag5);
@@ -1349,25 +1350,25 @@ bool not_full_edit_element()
 				case 5:
 					system("cls");
 
-					_ukr(); cout << endl << "\t\t\tЛюбий користувачу, вводимо нові данні данного поля!" << endl;
+					_ukr(); cout << endl << "\t\t\tГ‹ГѕГЎГЁГ© ГЄГ®Г°ГЁГ±ГІГіГўГ Г·Гі, ГўГўГ®Г¤ГЁГ¬Г® Г­Г®ГўВі Г¤Г Г­Г­Ві Г¤Г Г­Г­Г®ГЈГ® ГЇГ®Г«Гї!" << endl;
 
 					do {
 						cin.ignore(cin.rdbuf()->in_avail());
-						_ukr(); cout << endl << "\t\tВедіть код гравця (0 - на продажі): ";
-						getline(cin, _сhoice2);
-						if (regex_match(_сhoice2.c_str(), result_three_digit, regular_three_digit))
+						_ukr(); cout << endl << "\t\tГ‚ГҐГ¤ВіГІГј ГЄГ®Г¤ ГЈГ°Г ГўГ¶Гї (0 - Г­Г  ГЇГ°Г®Г¤Г Г¦Ві): ";
+						getline(cin, _Г±hoice2);
+						if (regex_match(_Г±hoice2.c_str(), result_three_digit, regular_three_digit))
 						{
 							flag6 = true;
-							data.kod = atoi(_сhoice2.c_str());
+							data.kod = atoi(_Г±hoice2.c_str());
 							if (proverka_kod_zapus_file(data) == false)
 							{
 								flag6 = 0;
-								_ukr(); cout << endl << "\t\tПомилка. Не вірне редагування коду, такого гравця з веденним кодом - не існує!";
+								_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . ГЌГҐ ГўВіГ°Г­ГҐ Г°ГҐГ¤Г ГЈГіГўГ Г­Г­Гї ГЄГ®Г¤Гі, ГІГ ГЄГ®ГЈГ® ГЈГ°Г ГўГ¶Гї Г§ ГўГҐГ¤ГҐГ­Г­ГЁГ¬ ГЄГ®Г¤Г®Г¬ - Г­ГҐ ВіГ±Г­ГіВє!";
 							}
 						}
 						else
 						{
-							_ukr(); cout << endl << "\t\tПомилка. Ви маєте можливість використовувати ТІЛЬКИ числа!";
+							_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г’ВІГ‹ГњГЉГ€ Г·ГЁГ±Г«Г !";
 						}
 					} while (!flag6);
 
@@ -1386,36 +1387,36 @@ bool not_full_edit_element()
 		}
 		else
 		{
-			if (var == 'Н' || var == 'н' || var == 'N' || var == 'n')
+			if (var == 'ГЌ' || var == 'Г­' || var == 'N' || var == 'n')
 			{
-				_ukr(); cout << endl << "\t\tСпробуйте спочатку!" << endl;
+				_ukr(); cout << endl << "\t\tГ‘ГЇГ°Г®ГЎГіГ©ГІГҐ Г±ГЇГ®Г·Г ГІГЄГі!" << endl;
 			}
 			else {
-				_ukr(); cout << endl << "\t\tПомилка!!!";
+				_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ !!!";
 			}
 			return false;
 		}
 	}
 }
 
-// функція меню редагування
+// ГґГіГ­ГЄГ¶ВіГї Г¬ГҐГ­Гѕ Г°ГҐГ¤Г ГЈГіГўГ Г­Г­Гї
 int menu_edit_element()
 {
 	int n, * pn = &n;
 	do
 	{
 		system("color F2");
-		_ukr(); cout << endl << "\tРедагування може виконуватися двома методами: \n";
-		_ukr(); cout << endl << "\t1. Цілком\n";
-		_ukr(); cout << endl << "\t2. За окремими полями\n";
-		_ukr(); cout << endl << "\t0. Скасування редагування";
+		_ukr(); cout << endl << "\tГђГҐГ¤Г ГЈГіГўГ Г­Г­Гї Г¬Г®Г¦ГҐ ГўГЁГЄГ®Г­ГіГўГ ГІГЁГ±Гї Г¤ГўГ®Г¬Г  Г¬ГҐГІГ®Г¤Г Г¬ГЁ: \n";
+		_ukr(); cout << endl << "\t1. Г–ВіГ«ГЄГ®Г¬\n";
+		_ukr(); cout << endl << "\t2. Г‡Г  Г®ГЄГ°ГҐГ¬ГЁГ¬ГЁ ГЇГ®Г«ГїГ¬ГЁ\n";
+		_ukr(); cout << endl << "\t0. Г‘ГЄГ Г±ГіГўГ Г­Г­Гї Г°ГҐГ¤Г ГЈГіГўГ Г­Г­Гї";
 
 		string _n;
 		
 		bool flag = 0;
 		do {
 			cin.ignore(cin.rdbuf()->in_avail());
-			_ukr(); cout << endl << "\n\tВаш вибiр - ";
+			_ukr(); cout << endl << "\n\tГ‚Г Гё ГўГЁГЎiГ° - ";
 			getline(cin, _n);
 			if (regex_match(_n.c_str(), result_2, regular_2))
 			{
@@ -1424,7 +1425,7 @@ int menu_edit_element()
 			}
 			else
 			{
-				_ukr(); cout << endl << "\t\tПомилка! Введення має бути цифровим і ніяким іншим, числа від 0 до 2 !!!";
+				_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ ! Г‚ГўГҐГ¤ГҐГ­Г­Гї Г¬Г Вє ГЎГіГІГЁ Г¶ГЁГґГ°Г®ГўГЁГ¬ Ві Г­ВіГїГЄГЁГ¬ ВіГ­ГёГЁГ¬, Г·ГЁГ±Г«Г  ГўВіГ¤ 0 Г¤Г® 2 !!!";
 			}
 		} while (!flag);
 
@@ -1435,7 +1436,7 @@ int menu_edit_element()
 			if (full_edit_element() == true)
 			{
 				system("cls");
-				_ukr(); cout << endl << "\tПісля редагування данні виглядають наступним чином:\n";
+				_ukr(); cout << endl << "\tГЏВіГ±Г«Гї Г°ГҐГ¤Г ГЈГіГўГ Г­Г­Гї Г¤Г Г­Г­Ві ГўГЁГЈГ«ГїГ¤Г ГѕГІГј Г­Г Г±ГІГіГЇГ­ГЁГ¬ Г·ГЁГ­Г®Г¬:\n";
 				review_file();
 			}
 			
@@ -1447,7 +1448,7 @@ int menu_edit_element()
 			if (not_full_edit_element() == true)
 			{
 				system("cls");
-				_ukr(); cout << endl << "\tПісля редагування данні виглядають наступним чином:\n";
+				_ukr(); cout << endl << "\tГЏВіГ±Г«Гї Г°ГҐГ¤Г ГЈГіГўГ Г­Г­Гї Г¤Г Г­Г­Ві ГўГЁГЈГ«ГїГ¤Г ГѕГІГј Г­Г Г±ГІГіГЇГ­ГЁГ¬ Г·ГЁГ­Г®Г¬:\n";
 				review_file();
 			}
 			
@@ -1459,12 +1460,12 @@ int menu_edit_element()
 	if (*pn == 0)
 	{
 		system("cls");
-		_ukr(); cout << endl << "\tРедагування записів скасовано." << endl;
+		_ukr(); cout << endl << "\tГђГҐГ¤Г ГЈГіГўГ Г­Г­Гї Г§Г ГЇГЁГ±ВіГў Г±ГЄГ Г±Г®ГўГ Г­Г®." << endl;
 		system_pause();
 	}
 }
 
-// функція меню сортування
+// ГґГіГ­ГЄГ¶ВіГї Г¬ГҐГ­Гѕ Г±Г®Г°ГІГіГўГ Г­Г­Гї
 int menu_sort()
 {
 	int n, * pn = &n;
@@ -1472,17 +1473,17 @@ int menu_sort()
 	{
 		system("cls");
 		system("color F2");
-		_ukr(); cout << endl << "\tСортування може виконуватися двома методами: \n";
-		_ukr(); cout << endl << "\t1. Відсортувати за вартістю\n";
-		_ukr(); cout << endl << "\t2. Відсортувати за країною\n";
-		_ukr(); cout << endl << "\t0. Повернення до попереднього меню";
+		_ukr(); cout << endl << "\tГ‘Г®Г°ГІГіГўГ Г­Г­Гї Г¬Г®Г¦ГҐ ГўГЁГЄГ®Г­ГіГўГ ГІГЁГ±Гї Г¤ГўГ®Г¬Г  Г¬ГҐГІГ®Г¤Г Г¬ГЁ: \n";
+		_ukr(); cout << endl << "\t1. Г‚ВіГ¤Г±Г®Г°ГІГіГўГ ГІГЁ Г§Г  ГўГ Г°ГІВіГ±ГІГѕ\n";
+		_ukr(); cout << endl << "\t2. Г‚ВіГ¤Г±Г®Г°ГІГіГўГ ГІГЁ Г§Г  ГЄГ°Г ВїГ­Г®Гѕ\n";
+		_ukr(); cout << endl << "\t0. ГЏГ®ГўГҐГ°Г­ГҐГ­Г­Гї Г¤Г® ГЇГ®ГЇГҐГ°ГҐГ¤Г­ГјГ®ГЈГ® Г¬ГҐГ­Гѕ";
 
 		string _n;
 		
 		bool flag = 0;
 		do {
 			cin.ignore(cin.rdbuf()->in_avail());
-			_ukr(); cout << endl << "\n\tВаш вибiр - ";
+			_ukr(); cout << endl << "\n\tГ‚Г Гё ГўГЁГЎiГ° - ";
 			getline(cin, _n);
 			if (regex_match(_n.c_str(), result_2, regular_2))
 			{
@@ -1491,7 +1492,7 @@ int menu_sort()
 			}
 			else
 			{
-				_ukr(); cout << endl << "\t\tПомилка! Введення має бути цифровим і ніяким іншим, числа від 0 до 2 !!!";
+				_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ ! Г‚ГўГҐГ¤ГҐГ­Г­Гї Г¬Г Вє ГЎГіГІГЁ Г¶ГЁГґГ°Г®ГўГЁГ¬ Ві Г­ВіГїГЄГЁГ¬ ВіГ­ГёГЁГ¬, Г·ГЁГ±Г«Г  ГўВіГ¤ 0 Г¤Г® 2 !!!";
 			}
 		} while (!flag);
 		
@@ -1499,22 +1500,22 @@ int menu_sort()
 		{
 		case 1:
 			system("cls");
-			_ukr(); cout << endl << "\tФайл до сортування записів.\n";
+			_ukr(); cout << endl << "\tГ”Г Г©Г« Г¤Г® Г±Г®Г°ГІГіГўГ Г­Г­Гї Г§Г ГЇГЁГ±ВіГў.\n";
 			review_file();
 			system_pause();
 			system("cls");
-			_ukr(); cout << endl << "\tФайл після сортування записів.\n";
+			_ukr(); cout << endl << "\tГ”Г Г©Г« ГЇВіГ±Г«Гї Г±Г®Г°ГІГіГўГ Г­Г­Гї Г§Г ГЇГЁГ±ВіГў.\n";
 			sort_transfer_cost();
 			review_file();
 			system_pause();
 			break;
 		case 2:
 			system("cls");
-			_ukr(); cout << endl << "\tФайл до сортування записів.\n";
+			_ukr(); cout << endl << "\tГ”Г Г©Г« Г¤Г® Г±Г®Г°ГІГіГўГ Г­Г­Гї Г§Г ГЇГЁГ±ВіГў.\n";
 			review_file();
 			system_pause();
 			system("cls");
-			_ukr(); cout << endl << "\tФайл після сортування записів.\n";
+			_ukr(); cout << endl << "\tГ”Г Г©Г« ГЇВіГ±Г«Гї Г±Г®Г°ГІГіГўГ Г­Г­Гї Г§Г ГЇГЁГ±ВіГў.\n";
 			sort_country();
 			review_file();
 			system_pause();
@@ -1525,7 +1526,7 @@ int menu_sort()
 	} while (*pn != 0);
 }
 
-// функція сортування за трансферною вартістю
+// ГґГіГ­ГЄГ¶ВіГї Г±Г®Г°ГІГіГўГ Г­Г­Гї Г§Г  ГІГ°Г Г­Г±ГґГҐГ°Г­Г®Гѕ ГўГ Г°ГІВіГ±ГІГѕ
 void sort_transfer_cost()
 {
 	team data, data1;
@@ -1554,7 +1555,7 @@ void sort_transfer_cost()
 	fclose(file);
 }
 
-// функція сортування за країною
+// ГґГіГ­ГЄГ¶ВіГї Г±Г®Г°ГІГіГўГ Г­Г­Гї Г§Г  ГЄГ°Г ВїГ­Г®Гѕ
 void sort_country()
 {
 	setlocale(LC_ALL, "ukrainian");
@@ -1585,7 +1586,7 @@ void sort_country()
 	_ukr();
 }
 
-// функція введення дати
+// ГґГіГ­ГЄГ¶ВіГї ГўГўГҐГ¤ГҐГ­Г­Гї Г¤Г ГІГЁ
 time_t vvod_data_of_birth()
 {
 	int day, mon, year;
@@ -1599,12 +1600,12 @@ time_t vvod_data_of_birth()
 	bool flag = 0;
 	do {
 		cin.ignore(cin.rdbuf()->in_avail());
-		_ukr(); cout << "\n\t\tВведіть день - ";
+		_ukr(); cout << "\n\t\tГ‚ГўГҐГ¤ВіГІГј Г¤ГҐГ­Гј - ";
 		getline(cin, _day);
 		if (regex_match(_day.c_str(), result_two_digit, regular_two_digit))
 		{
 			if (atoi(_day.c_str()) < 1 || atoi(_day.c_str()) > 31) {
-				_ukr(); cout << endl << "\t\tПомилка. Ви маєте можливість використовувати числа від 1 до 31!";
+				_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г·ГЁГ±Г«Г  ГўВіГ¤ 1 Г¤Г® 31!";
 			}
 			else {
 				flag = true;
@@ -1614,7 +1615,7 @@ time_t vvod_data_of_birth()
 		}
 		else
 		{
-			_ukr(); cout << endl << "\t\tПомилка. Ви маєте можливість використовувати ТІЛЬКИ числа від 1 до 31!";
+			_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г’ВІГ‹ГњГЉГ€ Г·ГЁГ±Г«Г  ГўВіГ¤ 1 Г¤Г® 31!";
 		}
 	} while (!flag);
 
@@ -1622,12 +1623,12 @@ time_t vvod_data_of_birth()
 	bool flag1 = 0;
 	do {
 		cin.ignore(cin.rdbuf()->in_avail());
-		_ukr(); cout << "\n\t\tВведіть місяць - ";
+		_ukr(); cout << "\n\t\tГ‚ГўГҐГ¤ВіГІГј Г¬ВіГ±ГїГ¶Гј - ";
 		getline(cin, _mon);
 		if (regex_match(_mon.c_str(), result_two_digit, regular_two_digit))
 		{
 			if (atoi(_mon.c_str()) < 1 || atoi(_mon.c_str()) > 12) {
-				_ukr(); cout << endl << "\t\tПомилка. Ви маєте можливість використовувати числа від 1 до 12!";
+				_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г·ГЁГ±Г«Г  ГўВіГ¤ 1 Г¤Г® 12!";
 			}
 			else {
 				flag1 = true;
@@ -1637,7 +1638,7 @@ time_t vvod_data_of_birth()
 		}
 		else
 		{
-			_ukr(); cout << endl << "\t\tПомилка. Ви маєте можливість використовувати ТІЛЬКИ числа від 1 до 12!";
+			_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г’ВІГ‹ГњГЉГ€ Г·ГЁГ±Г«Г  ГўВіГ¤ 1 Г¤Г® 12!";
 		}
 	} while (!flag1);
 
@@ -1646,7 +1647,7 @@ time_t vvod_data_of_birth()
 	bool flag2 = 0;
 	do {
 		cin.ignore(cin.rdbuf()->in_avail());
-		_ukr(); cout << "\n\t\tВведіть рік - ";
+		_ukr(); cout << "\n\t\tГ‚ГўГҐГ¤ВіГІГј Г°ВіГЄ - ";
 		getline(cin, _year);
 		if (regex_match(_year.c_str(), result_four_digit, regular_four_digit))
 		{
@@ -1656,7 +1657,7 @@ time_t vvod_data_of_birth()
 		}
 		else
 		{
-			_ukr(); cout << endl << "\t\tПомилка. Ви маєте можливість використовувати ТІЛЬКИ числа, рік в форматі - 1972 !";
+			_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г’ВІГ‹ГњГЉГ€ Г·ГЁГ±Г«Г , Г°ВіГЄ Гў ГґГ®Г°Г¬Г ГІВі - 1972 !";
 		}
 	} while (!flag2);
 
@@ -1664,25 +1665,25 @@ time_t vvod_data_of_birth()
 	return data;
 }
 
-// функція додавання записів в файл Команди
+// ГґГіГ­ГЄГ¶ВіГї Г¤Г®Г¤Г ГўГ Г­Г­Гї Г§Г ГЇГЁГ±ВіГў Гў ГґГ Г©Г« ГЉГ®Г¬Г Г­Г¤ГЁ
 void add_data()
 {
 	team data;
 	int n, * pn = &n;
 	bool flag6 = 0;
-	_ukr(); cout << endl << "\t\t\t\t\t\tДодавання нових записів у файл:\n" << endl;
+	_ukr(); cout << endl << "\t\t\t\t\t\tГ„Г®Г¤Г ГўГ Г­Г­Гї Г­Г®ГўГЁГµ Г§Г ГЇГЁГ±ВіГў Гі ГґГ Г©Г«:\n" << endl;
 
 	string _pn;
 	bool flag1 = 0;
 	
 	do {
 		cin.ignore(cin.rdbuf()->in_avail());
-		_ukr(); cout << "\t\tВедіть кількість нових записів або 0 для скасування (не більше 15): ";
+		_ukr(); cout << "\t\tГ‚ГҐГ¤ВіГІГј ГЄВіГ«ГјГЄВіГ±ГІГј Г­Г®ГўГЁГµ Г§Г ГЇГЁГ±ВіГў Г ГЎГ® 0 Г¤Г«Гї Г±ГЄГ Г±ГіГўГ Г­Г­Гї (Г­ГҐ ГЎВіГ«ГјГёГҐ 15): ";
 		getline(cin, _pn);
 		if (regex_match(_pn.c_str(), result_two_digit, regular_two_digit))
 		{
 			if (atoi(_pn.c_str()) < 1 || atoi(_pn.c_str()) > 15) {
-				_ukr(); cout  << "\n\t\tПомилка. Ви маєте можливість використовувати числа від 1 до 15!" << endl;
+				_ukr(); cout  << "\n\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г·ГЁГ±Г«Г  ГўВіГ¤ 1 Г¤Г® 15!" << endl;
 			}
 			else {
 				flag1 = true;
@@ -1691,7 +1692,7 @@ void add_data()
 		}
 		else
 		{
-			_ukr(); cout  << "\n\t\tПомилка. Ви маєте можливість використовувати ТІЛЬКИ числа!" << endl;
+			_ukr(); cout  << "\n\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г’ВІГ‹ГњГЉГ€ Г·ГЁГ±Г«Г !" << endl;
 		}
 
 	} while (!flag1);
@@ -1705,50 +1706,50 @@ void add_data()
 			_ukr();
 			int choice;
 			cin.ignore(cin.rdbuf()->in_avail());
-			cout << endl << "\t\tВедення " << i + 1 << " запису (загалом " << *pn << "):" << endl;
+			cout << endl << "\t\tГ‚ГҐГ¤ГҐГ­Г­Гї " << i + 1 << " Г§Г ГЇГЁГ±Гі (Г§Г ГЈГ Г«Г®Г¬ " << *pn << "):" << endl;
 
-			string _сhoice;
+			string _Г±hoice;
 			bool flag2 = 0;
 
-			_ukr(); cout << endl << "\t\tОберіть країну зі списку: ";
-			_ukr(); cout << endl << "\t\t1. Україна\n\t\t2. Аргентина\n\t\t3. Іспанія";
+			_ukr(); cout << endl << "\t\tГЋГЎГҐГ°ВіГІГј ГЄГ°Г ВїГ­Гі Г§Ві Г±ГЇГЁГ±ГЄГі: ";
+			_ukr(); cout << endl << "\t\t1. Г“ГЄГ°Г ВїГ­Г \n\t\t2. ГЂГ°ГЈГҐГ­ГІГЁГ­Г \n\t\t3. ВІГ±ГЇГ Г­ВіГї";
 			do {
 				cin.ignore(cin.rdbuf()->in_avail());
-				_ukr(); cout << endl << "\t\tВаш вибiр - ";
-				getline(cin, _сhoice);
-				if (regex_match(_сhoice.c_str(), result_3, regular_3))
+				_ukr(); cout << endl << "\t\tГ‚Г Гё ГўГЁГЎiГ° - ";
+				getline(cin, _Г±hoice);
+				if (regex_match(_Г±hoice.c_str(), result_3, regular_3))
 				{
 					flag2 = true;
-					choice = atoi(_сhoice.c_str());
+					choice = atoi(_Г±hoice.c_str());
 
-					if (choice == 1) strcpy_s(data.country, "Україна");
-					else if (choice == 2) strcpy_s(data.country, "Аргентина");
-					else strcpy_s(data.country, "Іспанія");
+					if (choice == 1) strcpy_s(data.country, "Г“ГЄГ°Г ВїГ­Г ");
+					else if (choice == 2) strcpy_s(data.country, "ГЂГ°ГЈГҐГ­ГІГЁГ­Г ");
+					else strcpy_s(data.country, "ВІГ±ГЇГ Г­ВіГї");
 				}
 				else
 				{
-					_ukr(); cout << "\n\t\tПомилка. Ви маєте можливість використовувати ТІЛЬКИ числа від 1 до 3!" << endl;
+					_ukr(); cout << "\n\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г’ВІГ‹ГњГЉГ€ Г·ГЁГ±Г«Г  ГўВіГ¤ 1 Г¤Г® 3!" << endl;
 				}
 
 			} while (!flag2);
 
 			string _team;
-			regex regular("([Є-ЯҐє-яґ]{4,13})");
+			regex regular("([ВЄ-ГџВҐВє-ГїВґ]{4,13})");
 			cmatch result;
 			bool flag = 0;
 			do {
 				cin.ignore(cin.rdbuf()->in_avail());
-				_ukr(); cout << endl << "\t\tВедіть назву команди не більше 13 символів (Наприклад: Шахтар): "; 
+				_ukr(); cout << endl << "\t\tГ‚ГҐГ¤ВіГІГј Г­Г Г§ГўГі ГЄГ®Г¬Г Г­Г¤ГЁ Г­ГҐ ГЎВіГ«ГјГёГҐ 13 Г±ГЁГ¬ГўГ®Г«ВіГў (ГЌГ ГЇГ°ГЁГЄГ«Г Г¤: ГГ ГµГІГ Г°): "; 
 				getline(cin, _team);
 				if (regex_match(_team.c_str(), result, regular))
 				{
 					flag = 1;
-					_ukr(); cout << endl << "\t\tВаша назва команди виглядає так - ФК " << _team;
+					_ukr(); cout << endl << "\t\tГ‚Г ГёГ  Г­Г Г§ГўГ  ГЄГ®Г¬Г Г­Г¤ГЁ ГўГЁГЈГ«ГїГ¤Г Вє ГІГ ГЄ - Г”ГЉ " << _team;
 					 strcpy_s(data.team_p, _team.c_str());
 				}
 				else
 				{
-					_ukr(); cout  << "\n\t\tПомилка! Формат введення має бути таким: 'Шахтар' !!" << endl;
+					_ukr(); cout  << "\n\t\tГЏГ®Г¬ГЁГ«ГЄГ ! Г”Г®Г°Г¬Г ГІ ГўГўГҐГ¤ГҐГ­Г­Гї Г¬Г Вє ГЎГіГІГЁ ГІГ ГЄГЁГ¬: 'ГГ ГµГІГ Г°' !!" << endl;
 				}
 			} while (!flag);
 
@@ -1756,13 +1757,13 @@ void add_data()
 			bool flag3 = 0;
 			do {
 				cin.ignore(cin.rdbuf()->in_avail());
-				_ukr(); cout << endl << "\t\tВедіть трансферну вартість футболіста (в млн.євро від 1 до 400): ";
+				_ukr(); cout << endl << "\t\tГ‚ГҐГ¤ВіГІГј ГІГ°Г Г­Г±ГґГҐГ°Г­Гі ГўГ Г°ГІВіГ±ГІГј ГґГіГІГЎГ®Г«ВіГ±ГІГ  (Гў Г¬Г«Г­.ВєГўГ°Г® ГўВіГ¤ 1 Г¤Г® 400): ";
 				getline(cin, _transfer_cost);
 				if (regex_match(_transfer_cost.c_str(), result_three_digit, regular_three_digit))
 				{
 
 					if (atoi(_transfer_cost.c_str()) < 1 || atoi(_transfer_cost.c_str()) > 400) {
-						_ukr(); cout  << "\n\t\tПомилка. Ви маєте можливість використовувати числа від 1 до 400!" << endl;
+						_ukr(); cout  << "\n\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г·ГЁГ±Г«Г  ГўВіГ¤ 1 Г¤Г® 400!" << endl;
 					}
 					else {
 						flag3 = true;
@@ -1771,24 +1772,24 @@ void add_data()
 				}
 				else
 				{
-					_ukr(); cout  << "\n\t\tПомилка. Ви маєте можливість використовувати ТІЛЬКИ числа від 1 до 400!" << endl;
+					_ukr(); cout  << "\n\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г’ВІГ‹ГњГЉГ€ Г·ГЁГ±Г«Г  ГўВіГ¤ 1 Г¤Г® 400!" << endl;
 				}
 			} while (!flag3);
 
-			string _сhoice1;
+			string _Г±hoice1;
 			bool flag4 = 0;
 
 			_ukr();
-			cout << endl << "\t\tОберіть термін контракту  зі списку: ";
-			cout << endl << "\t\t1. 1 рік\n\t\t2. 2 роки\n\t\t3. 3 роки";
+			cout << endl << "\t\tГЋГЎГҐГ°ВіГІГј ГІГҐГ°Г¬ВіГ­ ГЄГ®Г­ГІГ°Г ГЄГІГі  Г§Ві Г±ГЇГЁГ±ГЄГі: ";
+			cout << endl << "\t\t1. 1 Г°ВіГЄ\n\t\t2. 2 Г°Г®ГЄГЁ\n\t\t3. 3 Г°Г®ГЄГЁ";
 			do {
 				cin.ignore(cin.rdbuf()->in_avail());
-				_ukr(); cout << endl << "\t\tВаш вибiр - ";
-				getline(cin, _сhoice1);
-				if (regex_match(_сhoice1.c_str(), result_3, regular_3))
+				_ukr(); cout << endl << "\t\tГ‚Г Гё ГўГЁГЎiГ° - ";
+				getline(cin, _Г±hoice1);
+				if (regex_match(_Г±hoice1.c_str(), result_3, regular_3))
 				{
 					flag4 = true;
-					choice = atoi(_сhoice1.c_str());
+					choice = atoi(_Г±hoice1.c_str());
 
 					if (choice == 1) strcpy_s(data.contract, "1");
 					else if (choice == 2) strcpy_s(data.contract, "2");
@@ -1796,25 +1797,25 @@ void add_data()
 				}
 				else
 				{
-					_ukr(); cout  << "\n\t\tПомилка. Ви маєте можливість використовувати ТІЛЬКИ числа від 1 до 3!" << endl;
+					_ukr(); cout  << "\n\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г’ВІГ‹ГњГЉГ€ Г·ГЁГ±Г«Г  ГўВіГ¤ 1 Г¤Г® 3!" << endl;
 				}
 
 			} while (!flag4);
 
-			string _сhoice2;
+			string _Г±hoice2;
 			bool flag5 = 0;
 			do {
 				cin.ignore(cin.rdbuf()->in_avail());
-				_ukr(); cout << endl << "\t\tВедіть код гравця (0 - на продажі): ";
-				getline(cin, _сhoice2);
-				if (regex_match(_сhoice2.c_str(), result_three_digit, regular_three_digit))
+				_ukr(); cout << endl << "\t\tГ‚ГҐГ¤ВіГІГј ГЄГ®Г¤ ГЈГ°Г ГўГ¶Гї (0 - Г­Г  ГЇГ°Г®Г¤Г Г¦Ві): ";
+				getline(cin, _Г±hoice2);
+				if (regex_match(_Г±hoice2.c_str(), result_three_digit, regular_three_digit))
 				{
 					flag5 = true;
-					data.kod = atoi(_сhoice2.c_str());
+					data.kod = atoi(_Г±hoice2.c_str());
 				}
 				else
 				{
-					_ukr(); cout  << "\n\t\tПомилка. Ви маєте можливість використовувати ТІЛЬКИ числа!" << endl;
+					_ukr(); cout  << "\n\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г’ВІГ‹ГњГЉГ€ Г·ГЁГ±Г«Г !" << endl;
 				}
 			} while (!flag5);
 
@@ -1832,17 +1833,17 @@ void add_data()
 		if (flag6 == 1)
 		{
 			_ukr();
-			cout << endl << "\t\tДодана така кількість записів - " << *pn << " !";
+			cout << endl << "\t\tГ„Г®Г¤Г Г­Г  ГІГ ГЄГ  ГЄВіГ«ГјГЄВіГ±ГІГј Г§Г ГЇГЁГ±ВіГў - " << *pn << " !";
 		}
 	}
 	else
 	{
-		_ukr(); cout << endl << "\t\tДодавання нових записів у файл скасовано.";
+		_ukr(); cout << endl << "\t\tГ„Г®Г¤Г ГўГ Г­Г­Гї Г­Г®ГўГЁГµ Г§Г ГЇГЁГ±ВіГў Гі ГґГ Г©Г« Г±ГЄГ Г±Г®ГўГ Г­Г®.";
 	}
 	cout << endl << endl << endl;
 }
 
-// функція меню файла Гравці
+// ГґГіГ­ГЄГ¶ВіГї Г¬ГҐГ­Гѕ ГґГ Г©Г«Г  ГѓГ°Г ГўГ¶Ві
 int menu_file_1()
 {
 	int n, * pn = &n;
@@ -1851,19 +1852,19 @@ int menu_file_1()
 		system("color F5");
 		system("cls");
 		cout << "\n\n\n\n\n\n";
-		_ukr(); cout << endl << "\t\t\t\tГоловне меню файла 'Гравці'\n\n";
-		_ukr(); cout << endl << "\t1. Створення нового файлу\n";
-		_ukr(); cout << endl << "\t2. Перегляд існуючого файлу\n";
-		_ukr(); cout << endl << "\t3. Додавання даних у файл\n";
-		_ukr(); cout << endl << "\t4. Редагування даних за кодом запису\n";
-		_ukr(); cout << endl << "\t5. Видалення записів за кодом запису\n";
-		_ukr(); cout << endl << "\t0. Повернення до попереднього меню";
+		_ukr(); cout << endl << "\t\t\t\tГѓГ®Г«Г®ГўГ­ГҐ Г¬ГҐГ­Гѕ ГґГ Г©Г«Г  'ГѓГ°Г ГўГ¶Ві'\n\n";
+		_ukr(); cout << endl << "\t1. Г‘ГІГўГ®Г°ГҐГ­Г­Гї Г­Г®ГўГ®ГЈГ® ГґГ Г©Г«Гі\n";
+		_ukr(); cout << endl << "\t2. ГЏГҐГ°ГҐГЈГ«ГїГ¤ ВіГ±Г­ГіГѕГ·Г®ГЈГ® ГґГ Г©Г«Гі\n";
+		_ukr(); cout << endl << "\t3. Г„Г®Г¤Г ГўГ Г­Г­Гї Г¤Г Г­ГЁГµ Гі ГґГ Г©Г«\n";
+		_ukr(); cout << endl << "\t4. ГђГҐГ¤Г ГЈГіГўГ Г­Г­Гї Г¤Г Г­ГЁГµ Г§Г  ГЄГ®Г¤Г®Г¬ Г§Г ГЇГЁГ±Гі\n";
+		_ukr(); cout << endl << "\t5. Г‚ГЁГ¤Г Г«ГҐГ­Г­Гї Г§Г ГЇГЁГ±ВіГў Г§Г  ГЄГ®Г¤Г®Г¬ Г§Г ГЇГЁГ±Гі\n";
+		_ukr(); cout << endl << "\t0. ГЏГ®ГўГҐГ°Г­ГҐГ­Г­Гї Г¤Г® ГЇГ®ГЇГҐГ°ГҐГ¤Г­ГјГ®ГЈГ® Г¬ГҐГ­Гѕ";
 
 		string _n;
 		bool flag = 0;
 		do {
 			cin.ignore(cin.rdbuf()->in_avail());
-			_ukr(); cout << endl << "\n\tВаш вибiр - ";
+			_ukr(); cout << endl << "\n\tГ‚Г Гё ГўГЁГЎiГ° - ";
 			getline(cin, _n);
 			if (regex_match(_n.c_str(), result_5, regular_5))
 			{
@@ -1872,7 +1873,7 @@ int menu_file_1()
 			}
 			else
 			{
-				_ukr(); cout << endl << "\t\tПомилка! Введення має бути цифровим і ніяким іншим, числа від 0 до 5 !!!";
+				_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ ! Г‚ГўГҐГ¤ГҐГ­Г­Гї Г¬Г Вє ГЎГіГІГЁ Г¶ГЁГґГ°Г®ГўГЁГ¬ Ві Г­ВіГїГЄГЁГ¬ ВіГ­ГёГЁГ¬, Г·ГЁГ±Г«Г  ГўВіГ¤ 0 Г¤Г® 5 !!!";
 			}
 		} while (!flag);
 		
@@ -1887,13 +1888,13 @@ int menu_file_1()
 
 			fopen_s(&file_1, "player_1.dat", "rb");
 			if (!file_1) {
-				_ukr(); cout << endl << "\t\tПомилка. Створіть файл!";
+				_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‘ГІГўГ®Г°ВіГІГј ГґГ Г©Г«!";
 			}
 			else
 			{
 				if ((fread(&data, sizeof(player), 1, file_1)) == NULL)
 				{
-					_ukr(); cout << endl << "\t\tПомилка. Файл порожній!";
+					_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г”Г Г©Г« ГЇГ®Г°Г®Г¦Г­ВіГ©!";
 					fclose(file_1);
 				}
 				else
@@ -1915,13 +1916,13 @@ int menu_file_1()
 
 			fopen_s(&file_1, "player_1.dat", "rb");
 			if (!file_1) {
-				_ukr(); cout << endl << "\t\tПомилка. Створіть файл!";
+				_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‘ГІГўГ®Г°ВіГІГј ГґГ Г©Г«!";
 			}
 			else
 			{
 				if ((fread(&data, sizeof(player), 1, file_1)) == NULL)
 				{
-					_ukr(); cout << endl << "\t\tПомилка. Файл порожній!";
+					_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г”Г Г©Г« ГЇГ®Г°Г®Г¦Г­ВіГ©!";
 					fclose(file_1);
 				}
 				else
@@ -1938,13 +1939,13 @@ int menu_file_1()
 
 			fopen_s(&file_1, "player_1.dat", "rb");
 			if (!file_1) {
-				_ukr(); cout << endl << "\t\tПомилка. Створіть файл!";
+				_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‘ГІГўГ®Г°ВіГІГј ГґГ Г©Г«!";
 			}
 			else
 			{
 				if ((fread(&data, sizeof(player), 1, file_1)) == NULL)
 				{
-					_ukr(); cout << endl << "\t\tПомилка. Файл порожній!";
+					_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г”Г Г©Г« ГЇГ®Г°Г®Г¦Г­ВіГ©!";
 					fclose(file_1);
 				}
 				else
@@ -1962,32 +1963,32 @@ int menu_file_1()
 	} while (*pn != 0);
 }
 
-// функція створення нового файла Гравці
+// ГґГіГ­ГЄГ¶ВіГї Г±ГІГўГ®Г°ГҐГ­Г­Гї Г­Г®ГўГ®ГЈГ® ГґГ Г©Г«Г  ГѓГ°Г ГўГ¶Ві
 void new_file_1()
 {
 	const char file_new[] = "player_1.dat";
 	fopen_s(&file_1, file_new, "rb");
 	if (!file_1)
 	{
-		_ukr(); cout << "\t\tСтворюємо новий файл." << endl;
+		_ukr(); cout << "\t\tГ‘ГІГўГ®Г°ГѕВєГ¬Г® Г­Г®ГўГЁГ© ГґГ Г©Г«." << endl;
 		fopen_s(&file_1, file_new, "wb");
-		_ukr(); cout << "\t\tФайл успішно створнено!" << endl;
+		_ukr(); cout << "\t\tГ”Г Г©Г« ГіГ±ГЇВіГёГ­Г® Г±ГІГўГ®Г°Г­ГҐГ­Г®!" << endl;
 		system_pause();
 	}
 	else
 	{
-		_ukr(); cout << "\t\tІснує файл з певними даними!" << endl;
+		_ukr(); cout << "\t\tВІГ±Г­ГіВє ГґГ Г©Г« Г§ ГЇГҐГўГ­ГЁГ¬ГЁ Г¤Г Г­ГЁГ¬ГЁ!" << endl;
 		system_pause();
 	}
 	fclose(file_1);
 }
 
-// функція перегляду файла Гравці
+// ГґГіГ­ГЄГ¶ВіГї ГЇГҐГ°ГҐГЈГ«ГїГ¤Гі ГґГ Г©Г«Г  ГѓГ°Г ГўГ¶Ві
 void review_file_1()
 {
 	player data;
 	int num(0);
-	table_cap_table();  //// шапка та заголовок таблиці
+	table_cap_table();  //// ГёГ ГЇГЄГ  ГІГ  Г§Г ГЈГ®Г«Г®ГўГ®ГЄ ГІГ ГЎГ«ГЁГ¶Ві
 	fopen_s(&file_1, "player_1.dat", "rb");	
 	while (fread(&data, sizeof(player), 1, file_1))
 	{
@@ -2006,39 +2007,39 @@ void review_file_1()
 	}
 	fclose(file_1);
 	cout << "\n";
-	for (size_t i = 0; i <= 81; i++) cout << "-";  /// кінець таблиці
+	for (size_t i = 0; i <= 81; i++) cout << "-";  /// ГЄВіГ­ГҐГ¶Гј ГІГ ГЎГ«ГЁГ¶Ві
 }
 
-// функція шапки таблиці - Гравці
+// ГґГіГ­ГЄГ¶ВіГї ГёГ ГЇГЄГЁ ГІГ ГЎГ«ГЁГ¶Ві - ГѓГ°Г ГўГ¶Ві
 void table_cap_table()
 {
 	player data;
 	size_t total_kol(0), kol_role_vr(0), kol_role_lp(0), kol_role_cf(0);
-	_ukr(); cout << "\t\t\t\t\tДетальна інформація про гравців FIFA!" << endl;
+	_ukr(); cout << "\t\t\t\t\tГ„ГҐГІГ Г«ГјГ­Г  ВіГ­ГґГ®Г°Г¬Г Г¶ВіГї ГЇГ°Г® ГЈГ°Г ГўГ¶ВіГў FIFA!" << endl;
 
 	fopen_s(&file_1, "player_1.dat", "rb");
 	while (fread(&data, sizeof(player), 1, file_1))
 	{
 		total_kol++;
-		if (strcmp(data.role, "ВР") == 0) kol_role_vr++;
-		if (strcmp(data.role, "ЛП") == 0) kol_role_lp++;
-		if (strcmp(data.role, "ЦФ") == 0) kol_role_cf++;
+		if (strcmp(data.role, "Г‚Гђ") == 0) kol_role_vr++;
+		if (strcmp(data.role, "Г‹ГЏ") == 0) kol_role_lp++;
+		if (strcmp(data.role, "Г–Г”") == 0) kol_role_cf++;
 	};
-	_ukr(); cout << "\n\tКоротка інформація файла: \n\n";
-	_ukr(); cout << "\tКількість записів в файлі -> " << total_kol << endl;
-	_ukr(); cout << "\tКількість амплуа 'ВР' -> " << kol_role_vr << endl;
-	_ukr(); cout << "\tКількість амплуа 'ЛП' -> " << kol_role_lp << endl;
-	_ukr(); cout << "\tКількість амплуа 'ЦФ' -> " << kol_role_cf << endl;
+	_ukr(); cout << "\n\tГЉГ®Г°Г®ГІГЄГ  ВіГ­ГґГ®Г°Г¬Г Г¶ВіГї ГґГ Г©Г«Г : \n\n";
+	_ukr(); cout << "\tГЉВіГ«ГјГЄВіГ±ГІГј Г§Г ГЇГЁГ±ВіГў Гў ГґГ Г©Г«Ві -> " << total_kol << endl;
+	_ukr(); cout << "\tГЉВіГ«ГјГЄВіГ±ГІГј Г Г¬ГЇГ«ГіГ  'Г‚Гђ' -> " << kol_role_vr << endl;
+	_ukr(); cout << "\tГЉВіГ«ГјГЄВіГ±ГІГј Г Г¬ГЇГ«ГіГ  'Г‹ГЏ' -> " << kol_role_lp << endl;
+	_ukr(); cout << "\tГЉВіГ«ГјГЄВіГ±ГІГј Г Г¬ГЇГ«ГіГ  'Г–Г”' -> " << kol_role_cf << endl;
 	fclose(file_1);
 
 	cout << "\n";
 	for (size_t i = 0; i <= 81; i++) cout << "-";
-	_ukr(); cout << "\n| Код |" << "         П.І.      |" << " Дата народження |";
-	_ukr(); cout << " Стать |" << " Громадянство |" << " Амплуа |" << " KG |" << endl;
+	_ukr(); cout << "\n| ГЉГ®Г¤ |" << "         ГЏ.ВІ.      |" << " Г„Г ГІГ  Г­Г Г°Г®Г¤Г¦ГҐГ­Г­Гї |";
+	_ukr(); cout << " Г‘ГІГ ГІГј |" << " ГѓГ°Г®Г¬Г Г¤ГїГ­Г±ГІГўГ® |" << " ГЂГ¬ГЇГ«ГіГ  |" << " KG |" << endl;
 	for (size_t i = 0; i <= 81; i++) cout << "-";
 }
 
-// функція на наявність ідентичного запису в файлі - Гравці
+// ГґГіГ­ГЄГ¶ВіГї Г­Г  Г­Г ГїГўГ­ВіГ±ГІГј ВіГ¤ГҐГ­ГІГЁГ·Г­Г®ГЈГ® Г§Г ГЇГЁГ±Гі Гў ГґГ Г©Г«Ві - ГѓГ°Г ГўГ¶Ві
 bool proverka_zapusy_file_1(player data)
 {
 	player data1;
@@ -2048,7 +2049,7 @@ bool proverka_zapusy_file_1(player data)
 		if (data.kod == data1.kod)
 		{
 			fclose(file_1);
-			cout << "\t\tВведений запис існує в файлі!" << endl;
+			cout << "\t\tГ‚ГўГҐГ¤ГҐГ­ГЁГ© Г§Г ГЇГЁГ± ВіГ±Г­ГіВє Гў ГґГ Г©Г«Ві!" << endl;
 			return true;
 		}
 	};
@@ -2056,7 +2057,7 @@ bool proverka_zapusy_file_1(player data)
 	return false;
 }
 
-// функція додавання записів в файл Гравці
+// ГґГіГ­ГЄГ¶ВіГї Г¤Г®Г¤Г ГўГ Г­Г­Гї Г§Г ГЇГЁГ±ВіГў Гў ГґГ Г©Г« ГѓГ°Г ГўГ¶Ві
 void add_data_file_1()
 {
 	player data;
@@ -2071,19 +2072,19 @@ void add_data_file_1()
 	}
 	fclose(file_1); 
 
-	_ukr(); cout << endl << "\t\t\t\t\t\tДодавання нових записів у файл 'Гравці' :\n" << endl;
+	_ukr(); cout << endl << "\t\t\t\t\t\tГ„Г®Г¤Г ГўГ Г­Г­Гї Г­Г®ГўГЁГµ Г§Г ГЇГЁГ±ВіГў Гі ГґГ Г©Г« 'ГѓГ°Г ГўГ¶Ві' :\n" << endl;
 	cin.ignore(cin.rdbuf()->in_avail());
 
 	string _pn;
 	bool flag1 = 0;
 	do {
 		cin.ignore(cin.rdbuf()->in_avail());
-		_ukr(); cout << "\t\tВедіть кількість нових записів або 0 для скасування (не більше 15): ";
+		_ukr(); cout << "\t\tГ‚ГҐГ¤ВіГІГј ГЄВіГ«ГјГЄВіГ±ГІГј Г­Г®ГўГЁГµ Г§Г ГЇГЁГ±ВіГў Г ГЎГ® 0 Г¤Г«Гї Г±ГЄГ Г±ГіГўГ Г­Г­Гї (Г­ГҐ ГЎВіГ«ГјГёГҐ 15): ";
 		getline(cin, _pn);
 		if (regex_match(_pn.c_str(), result_two_digit, regular_two_digit))
 		{
 			if (atoi(_pn.c_str()) < 1 || atoi(_pn.c_str()) > 15) {
-				_ukr(); cout  << "\n\t\tПомилка. Ви маєте можливість використовувати числа від 1 до 15!" << endl;
+				_ukr(); cout  << "\n\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г·ГЁГ±Г«Г  ГўВіГ¤ 1 Г¤Г® 15!" << endl;
 			}
 			else {
 				flag1 = true;
@@ -2092,7 +2093,7 @@ void add_data_file_1()
 		}
 		else
 		{
-			_ukr(); cout  << "\n\t\tПомилка. Ви маєте можливість використовувати ТІЛЬКИ числа!" << endl;
+			_ukr(); cout  << "\n\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г’ВІГ‹ГњГЉГ€ Г·ГЁГ±Г«Г !" << endl;
 		}
 
 	} while (!flag1);
@@ -2105,102 +2106,102 @@ void add_data_file_1()
 			_ukr();
 			int choice = 0;
 			cin.ignore(cin.rdbuf()->in_avail());
-			cout << endl << "\t\tВедення " << i + 1 << " запису (загалом " << *pn << "):" << endl;
+			cout << endl << "\t\tГ‚ГҐГ¤ГҐГ­Г­Гї " << i + 1 << " Г§Г ГЇГЁГ±Гі (Г§Г ГЈГ Г«Г®Г¬ " << *pn << "):" << endl;
 			
 			++num;
 			
 			string name_player;
-			regex regular("([Є-ЯҐє-яґ]+?)( )([Є-ЯҐє-яґ]+?)");
+			regex regular("([ВЄ-ГџВҐВє-ГїВґ]+?)( )([ВЄ-ГџВҐВє-ГїВґ]+?)");
 			cmatch result;
 			bool flag = 0;
 			do {
 				cin.ignore(cin.rdbuf()->in_avail());
-				_ukr(); cout << endl << "\t\tВедіть прізвище та ім'я гравця (Наприклад: Ярмоленко Андрій): "; 
+				_ukr(); cout << endl << "\t\tГ‚ГҐГ¤ВіГІГј ГЇГ°ВіГ§ГўГЁГ№ГҐ ГІГ  ВіГ¬'Гї ГЈГ°Г ГўГ¶Гї (ГЌГ ГЇГ°ГЁГЄГ«Г Г¤: ГџГ°Г¬Г®Г«ГҐГ­ГЄГ® ГЂГ­Г¤Г°ВіГ©): "; 
 				getline(cin, name_player);  
 				if (regex_match(name_player.c_str(), result, regular))
 				{
 					flag = 1;
-					cout << "\t\tВаше прізвище та ім'я гравця виглядає так - " << name_player;
+					cout << "\t\tГ‚Г ГёГҐ ГЇГ°ВіГ§ГўГЁГ№ГҐ ГІГ  ВіГ¬'Гї ГЈГ°Г ГўГ¶Гї ГўГЁГЈГ«ГїГ¤Г Вє ГІГ ГЄ - " << name_player;
 					strcpy_s(data.first_second_name_player, name_player.c_str());
 				}
 				else
 				{
-					cout << "\t\tПомилка! Формат введення має бути таким: 'Ярмоленко Андрій' !!";
+					cout << "\t\tГЏГ®Г¬ГЁГ«ГЄГ ! Г”Г®Г°Г¬Г ГІ ГўГўГҐГ¤ГҐГ­Г­Гї Г¬Г Вє ГЎГіГІГЁ ГІГ ГЄГЁГ¬: 'ГџГ°Г¬Г®Г«ГҐГ­ГЄГ® ГЂГ­Г¤Г°ВіГ©' !!";
 				}
 			} while (!flag);
 
 			cin.ignore(cin.rdbuf()->in_avail());
-			_ukr(); cout << endl << "\t\tВедіть дату народження футболіста:" << endl;
+			_ukr(); cout << endl << "\t\tГ‚ГҐГ¤ВіГІГј Г¤Г ГІГі Г­Г Г°Г®Г¤Г¦ГҐГ­Г­Гї ГґГіГІГЎГ®Г«ВіГ±ГІГ :" << endl;
 			data.date_of_birth = vvod_data_of_birth();
 
-			string _сhoice;
+			string _Г±hoice;
 			bool flag2 = 0;
 			_ukr();
-			cout << endl << "\n\t\tОберіть стать гравця: ";
-			cout << endl << "\t\t1. 'ж' – жіноча\n\t\t2. 'ч' – чоловіча";
+			cout << endl << "\n\t\tГЋГЎГҐГ°ВіГІГј Г±ГІГ ГІГј ГЈГ°Г ГўГ¶Гї: ";
+			cout << endl << "\t\t1. 'Г¦' вЂ“ Г¦ВіГ­Г®Г·Г \n\t\t2. 'Г·' вЂ“ Г·Г®Г«Г®ГўВіГ·Г ";
 			do {
 				cin.ignore(cin.rdbuf()->in_avail());
-				_ukr(); cout << endl << "\t\tВаш вибiр - ";
-				getline(cin, _сhoice);
-				if (regex_match(_сhoice.c_str(), result_2, regular_2))
+				_ukr(); cout << endl << "\t\tГ‚Г Гё ГўГЁГЎiГ° - ";
+				getline(cin, _Г±hoice);
+				if (regex_match(_Г±hoice.c_str(), result_2, regular_2))
 				{
 					flag2 = true;
-					choice = atoi(_сhoice.c_str());
+					choice = atoi(_Г±hoice.c_str());
 
-					if (choice == 1) strcpy_s(data.sex, "Ж");
-					else strcpy_s(data.sex, "Ч");
+					if (choice == 1) strcpy_s(data.sex, "Г†");
+					else strcpy_s(data.sex, "Г—");
 				}
 				else
 				{
-					_ukr(); cout  << "\n\t\tПомилка. Ви маєте можливість використовувати ТІЛЬКИ числа від 1 до 2!" << endl;
+					_ukr(); cout  << "\n\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г’ВІГ‹ГњГЉГ€ Г·ГЁГ±Г«Г  ГўВіГ¤ 1 Г¤Г® 2!" << endl;
 				}
 
 			} while (!flag2);
 
-			string _сhoice1;
+			string _Г±hoice1;
 			bool flag3 = 0;
-			cout << endl << "\n\t\tОберіть громадянство зі списку: ";
-			cout << endl << "\t\t1. Україна\n\t\t2. Аргентина\n\t\t3. Іспанія";
+			cout << endl << "\n\t\tГЋГЎГҐГ°ВіГІГј ГЈГ°Г®Г¬Г Г¤ГїГ­Г±ГІГўГ® Г§Ві Г±ГЇГЁГ±ГЄГі: ";
+			cout << endl << "\t\t1. Г“ГЄГ°Г ВїГ­Г \n\t\t2. ГЂГ°ГЈГҐГ­ГІГЁГ­Г \n\t\t3. ВІГ±ГЇГ Г­ВіГї";
 			do {
 				cin.ignore(cin.rdbuf()->in_avail());
-				_ukr(); cout << endl << "\t\tВаш вибiр - ";
-				getline(cin, _сhoice1);
-				if (regex_match(_сhoice1.c_str(), result_3, regular_3))
+				_ukr(); cout << endl << "\t\tГ‚Г Гё ГўГЁГЎiГ° - ";
+				getline(cin, _Г±hoice1);
+				if (regex_match(_Г±hoice1.c_str(), result_3, regular_3))
 				{
 					flag3 = true;
-					choice = atoi(_сhoice1.c_str());
+					choice = atoi(_Г±hoice1.c_str());
 
-					if (choice == 1) strcpy_s(data.nationality, "Україна");
-					else if (choice == 2) strcpy_s(data.nationality, "Аргентина");
-					else strcpy_s(data.nationality, "Іспанія");
+					if (choice == 1) strcpy_s(data.nationality, "Г“ГЄГ°Г ВїГ­Г ");
+					else if (choice == 2) strcpy_s(data.nationality, "ГЂГ°ГЈГҐГ­ГІГЁГ­Г ");
+					else strcpy_s(data.nationality, "ВІГ±ГЇГ Г­ВіГї");
 				}
 				else
 				{
-					_ukr(); cout  << "\n\t\tПомилка. Ви маєте можливість використовувати ТІЛЬКИ числа від 1 до 3!" << endl;
+					_ukr(); cout  << "\n\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г’ВІГ‹ГњГЉГ€ Г·ГЁГ±Г«Г  ГўВіГ¤ 1 Г¤Г® 3!" << endl;
 				}
 
 			} while (!flag3);
 
-			string _сhoice2;
+			string _Г±hoice2;
 			bool flag4 = 0;
-			cout << endl << "\n\t\tОберіть амплуа зі списку: ";
-			cout << endl << "\t\t1. ВР – воротар\n\t\t2. ЛП – лівий півзахисник\n\t\t3. ЦФ – центр форвард";
+			cout << endl << "\n\t\tГЋГЎГҐГ°ВіГІГј Г Г¬ГЇГ«ГіГ  Г§Ві Г±ГЇГЁГ±ГЄГі: ";
+			cout << endl << "\t\t1. Г‚Гђ вЂ“ ГўГ®Г°Г®ГІГ Г°\n\t\t2. Г‹ГЏ вЂ“ Г«ВіГўГЁГ© ГЇВіГўГ§Г ГµГЁГ±Г­ГЁГЄ\n\t\t3. Г–Г” вЂ“ Г¶ГҐГ­ГІГ° ГґГ®Г°ГўГ Г°Г¤";
 			do {
 				cin.ignore(cin.rdbuf()->in_avail());
-				_ukr(); cout << endl << "\t\tВаш вибiр - ";
-				getline(cin, _сhoice2);
-				if (regex_match(_сhoice2.c_str(), result_3, regular_3))
+				_ukr(); cout << endl << "\t\tГ‚Г Гё ГўГЁГЎiГ° - ";
+				getline(cin, _Г±hoice2);
+				if (regex_match(_Г±hoice2.c_str(), result_3, regular_3))
 				{
 					flag4 = true;
-					choice = atoi(_сhoice2.c_str());
+					choice = atoi(_Г±hoice2.c_str());
 
-					if (choice == 1) strcpy_s(data.role, "ВР");
-					else if (choice == 2) strcpy_s(data.role, "ЛП");
-					else strcpy_s(data.role, "ЦФ");
+					if (choice == 1) strcpy_s(data.role, "Г‚Гђ");
+					else if (choice == 2) strcpy_s(data.role, "Г‹ГЏ");
+					else strcpy_s(data.role, "Г–Г”");
 				}
 				else
 				{
-					_ukr(); cout  << "\n\t\tПомилка. Ви маєте можливість використовувати ТІЛЬКИ числа від 1 до 3!" << endl;
+					_ukr(); cout  << "\n\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г’ВІГ‹ГњГЉГ€ Г·ГЁГ±Г«Г  ГўВіГ¤ 1 Г¤Г® 3!" << endl;
 				}
 
 			} while (!flag4);
@@ -2210,13 +2211,13 @@ void add_data_file_1()
 
 			do {
 				cin.ignore(cin.rdbuf()->in_avail());
-				_ukr(); cout << endl << "\n\t\tВедіть кількість проведених ігор (KG)  футболіста (від 1 до 150): ";
+				_ukr(); cout << endl << "\n\t\tГ‚ГҐГ¤ВіГІГј ГЄВіГ«ГјГЄВіГ±ГІГј ГЇГ°Г®ГўГҐГ¤ГҐГ­ГЁГµ ВіГЈГ®Г° (KG)  ГґГіГІГЎГ®Г«ВіГ±ГІГ  (ГўВіГ¤ 1 Г¤Г® 150): ";
 				getline(cin, _kol_games);
 				if (regex_match(_kol_games.c_str(), result_three_digit, regular_three_digit))
 				{
 
 					if (atoi(_kol_games.c_str()) < 1 || atoi(_kol_games.c_str()) > 150) {
-						_ukr(); cout  << "\n\t\tПомилка. Ви маєте можливість використовувати числа від 1 до 150!" << endl;
+						_ukr(); cout  << "\n\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г·ГЁГ±Г«Г  ГўВіГ¤ 1 Г¤Г® 150!" << endl;
 					}
 					else {
 						flag5 = true;
@@ -2225,7 +2226,7 @@ void add_data_file_1()
 				}
 				else
 				{
-					_ukr(); cout  << "\n\t\tПомилка. Ви маєте можливість використовувати ТІЛЬКИ числа від 1 до 150!" << endl;
+					_ukr(); cout  << "\n\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г’ВІГ‹ГњГЉГ€ Г·ГЁГ±Г«Г  ГўВіГ¤ 1 Г¤Г® 150!" << endl;
 				}
 			} while (!flag5);
 
@@ -2242,17 +2243,17 @@ void add_data_file_1()
 		if (flag6 == 1)
 		{
 			_ukr();
-			cout << endl << "\t\tДодана така кількість записів - " << *pn << " !";
+			cout << endl << "\t\tГ„Г®Г¤Г Г­Г  ГІГ ГЄГ  ГЄВіГ«ГјГЄВіГ±ГІГј Г§Г ГЇГЁГ±ВіГў - " << *pn << " !";
 		}
 	}
 	else
 	{
-		_ukr(); cout << endl << "\t\tДодавання нових записів у файл скасовано.";
+		_ukr(); cout << endl << "\t\tГ„Г®Г¤Г ГўГ Г­Г­Гї Г­Г®ГўГЁГµ Г§Г ГЇГЁГ±ВіГў Гі ГґГ Г©Г« Г±ГЄГ Г±Г®ГўГ Г­Г®.";
 	}
 	cout << endl << endl << endl;
 }
 
-// функція редагування файла Гравці
+// ГґГіГ­ГЄГ¶ВіГї Г°ГҐГ¤Г ГЈГіГўГ Г­Г­Гї ГґГ Г©Г«Г  ГѓГ°Г ГўГ¶Ві
 int edit_kod_file_1()
 {
 	player data;
@@ -2268,7 +2269,7 @@ int edit_kod_file_1()
 		review_file_1();
 		cout << endl;
 		cin.ignore(cin.rdbuf()->in_avail());
-		_ukr(); cout << endl << "\n\tВведіть код запису, який необхідно редагувати - ";
+		_ukr(); cout << endl << "\n\tГ‚ГўГҐГ¤ВіГІГј ГЄГ®Г¤ Г§Г ГЇГЁГ±Гі, ГїГЄГЁГ© Г­ГҐГ®ГЎГµВіГ¤Г­Г® Г°ГҐГ¤Г ГЈГіГўГ ГІГЁ - ";
 		getline(cin, _n_edit);
 		if (regex_match(_n_edit.c_str(), result_three_digit, regular_three_digit))
 		{
@@ -2277,7 +2278,7 @@ int edit_kod_file_1()
 		}
 		else
 		{
-			_ukr(); cout << endl << "\t\tПомилка. Ви маєте можливість використовувати ТІЛЬКИ числа!";
+			_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г’ВІГ‹ГњГЉГ€ Г·ГЁГ±Г«Г !";
 		}
 
 	} while (!flag);
@@ -2300,7 +2301,7 @@ int edit_kod_file_1()
 	if (temp == 0)
 	{
 		_ukr();
-		cout << "\t\tПомилка. Введеного коду не існує!" << endl;
+		cout << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГўГҐГ¤ГҐГ­Г®ГЈГ® ГЄГ®Г¤Гі Г­ГҐ ВіГ±Г­ГіВє!" << endl;
 		return 0;
 	}
 
@@ -2310,8 +2311,8 @@ int edit_kod_file_1()
 	fread(&data, sizeof(player), 1, file_1);
 	cout << "\n";
 	for (size_t i = 0; i <= 83; i++) cout << "-";
-	_ukr(); cout << "\n| Код |" << "         П.І.      |" << " Дата народження |";
-	_ukr(); cout << " Стать |" << "  Громадянство  |" << " Амплуа |" << " KG |" << endl;
+	_ukr(); cout << "\n| ГЉГ®Г¤ |" << "         ГЏ.ВІ.      |" << " Г„Г ГІГ  Г­Г Г°Г®Г¤Г¦ГҐГ­Г­Гї |";
+	_ukr(); cout << " Г‘ГІГ ГІГј |" << "  ГѓГ°Г®Г¬Г Г¤ГїГ­Г±ГІГўГ®  |" << " ГЂГ¬ГЇГ«ГіГ  |" << " KG |" << endl;
 	for (size_t i = 0; i <= 83; i++) cout << "-";
 
 	struct tm t_data;
@@ -2327,32 +2328,32 @@ int edit_kod_file_1()
 	cout << '|' << right << setw(3) << data.kol_games << setw(2) << '|';
 
 	cout << "\n";
-	for (size_t i = 0; i <= 83; i++) cout << "-";  /// кінець таблиці
+	for (size_t i = 0; i <= 83; i++) cout << "-";  /// ГЄВіГ­ГҐГ¶Гј ГІГ ГЎГ«ГЁГ¶Ві
 
 	fclose(file_1);
 
-	_ukr(); cout << endl << "\n\tВи цей запис хотіли відредагувати ? Т/Y(так)/Н/N(ні) - ";
+	_ukr(); cout << endl << "\n\tГ‚ГЁ Г¶ГҐГ© Г§Г ГЇГЁГ± ГµГ®ГІВіГ«ГЁ ГўВіГ¤Г°ГҐГ¤Г ГЈГіГўГ ГІГЁ ? Г’/Y(ГІГ ГЄ)/ГЌ/N(Г­Ві) - ";
 	cin >> var;
 	cin.ignore();
-	if (var == 'Т' || var == 'т' || var == 'Y' || var == 'y')
+	if (var == 'Г’' || var == 'ГІ' || var == 'Y' || var == 'y')
 	{
 		do
 		{
 			system("cls");
-			_ukr(); cout << endl << "\tПоля які ви можете відредагувати:\n";
-			_ukr(); cout << endl << "\t1. П.І.\n";
-			_ukr(); cout << endl << "\t2. Дата народження\n";
-			_ukr(); cout << endl << "\t3. Стать\n";
-			_ukr(); cout << endl << "\t4. Громадянство\n";
-			_ukr(); cout << endl << "\t5. Амплуа\n";
-			_ukr(); cout << endl << "\t6. KG - кількість проведених ігор\n";
-			_ukr(); cout << endl << "\t0. Повернення до попереднього меню";
+			_ukr(); cout << endl << "\tГЏГ®Г«Гї ГїГЄВі ГўГЁ Г¬Г®Г¦ГҐГІГҐ ГўВіГ¤Г°ГҐГ¤Г ГЈГіГўГ ГІГЁ:\n";
+			_ukr(); cout << endl << "\t1. ГЏ.ВІ.\n";
+			_ukr(); cout << endl << "\t2. Г„Г ГІГ  Г­Г Г°Г®Г¤Г¦ГҐГ­Г­Гї\n";
+			_ukr(); cout << endl << "\t3. Г‘ГІГ ГІГј\n";
+			_ukr(); cout << endl << "\t4. ГѓГ°Г®Г¬Г Г¤ГїГ­Г±ГІГўГ®\n";
+			_ukr(); cout << endl << "\t5. ГЂГ¬ГЇГ«ГіГ \n";
+			_ukr(); cout << endl << "\t6. KG - ГЄВіГ«ГјГЄВіГ±ГІГј ГЇГ°Г®ГўГҐГ¤ГҐГ­ГЁГµ ВіГЈГ®Г°\n";
+			_ukr(); cout << endl << "\t0. ГЏГ®ГўГҐГ°Г­ГҐГ­Г­Гї Г¤Г® ГЇГ®ГЇГҐГ°ГҐГ¤Г­ГјГ®ГЈГ® Г¬ГҐГ­Гѕ";
 
 			string _n;
 			bool flag0 = 0;
 			do {
 				cin.ignore(cin.rdbuf()->in_avail());
-				_ukr(); cout << endl << "\n\tВаш вибiр - ";
+				_ukr(); cout << endl << "\n\tГ‚Г Гё ГўГЁГЎiГ° - ";
 				getline(cin, _n);
 				if (regex_match(_n.c_str(), result_6, regular_6))
 				{
@@ -2361,19 +2362,19 @@ int edit_kod_file_1()
 				}
 				else
 				{
-					_ukr(); cout << endl << "\t\tПомилка! Введення має бути цифровим і ніяким іншим, числа від 0 до 6 !!!";
+					_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ ! Г‚ГўГҐГ¤ГҐГ­Г­Гї Г¬Г Вє ГЎГіГІГЁ Г¶ГЁГґГ°Г®ГўГЁГ¬ Ві Г­ВіГїГЄГЁГ¬ ВіГ­ГёГЁГ¬, Г·ГЁГ±Г«Г  ГўВіГ¤ 0 Г¤Г® 6 !!!";
 				}
 			} while (!flag0);
 
 			string name_player;
-			regex regular1("([Є-ЯҐє-яґ]+?)( )([Є-ЯҐє-яґ]+?)");
+			regex regular1("([ВЄ-ГџВҐВє-ГїВґ]+?)( )([ВЄ-ГџВҐВє-ГїВґ]+?)");
 			cmatch result1;
 			bool flag1 = 0;
 
-			string _сhoice;
+			string _Г±hoice;
 			bool flag2 = 0;
 
-			string _сhoice1;
+			string _Г±hoice1;
 			bool flag3 = 0;
 
 			string _kol_games;
@@ -2384,20 +2385,20 @@ int edit_kod_file_1()
 			case 1:
 				system("cls");
 
-				_ukr(); cout << endl << "\t\tЛюбий користувачу, вводимо нові данні данного поля!" << endl;
+				_ukr(); cout << endl << "\t\tГ‹ГѕГЎГЁГ© ГЄГ®Г°ГЁГ±ГІГіГўГ Г·Гі, ГўГўГ®Г¤ГЁГ¬Г® Г­Г®ГўВі Г¤Г Г­Г­Ві Г¤Г Г­Г­Г®ГЈГ® ГЇГ®Г«Гї!" << endl;
 				do {
 					cin.ignore(cin.rdbuf()->in_avail());
-					_ukr(); cout << endl << "\n\tВедіть прізвище та ім'я гравця (Наприклад: Ярмоленко Андрій): ";
+					_ukr(); cout << endl << "\n\tГ‚ГҐГ¤ВіГІГј ГЇГ°ВіГ§ГўГЁГ№ГҐ ГІГ  ВіГ¬'Гї ГЈГ°Г ГўГ¶Гї (ГЌГ ГЇГ°ГЁГЄГ«Г Г¤: ГџГ°Г¬Г®Г«ГҐГ­ГЄГ® ГЂГ­Г¤Г°ВіГ©): ";
 					getline(cin, name_player);
 					if (regex_match(name_player.c_str(), result1, regular1))
 					{
 						flag1 = 1;
-						cout << "\n\tВаше прізвище та ім'я гравця виглядає так - " << name_player;
+						cout << "\n\tГ‚Г ГёГҐ ГЇГ°ВіГ§ГўГЁГ№ГҐ ГІГ  ВіГ¬'Гї ГЈГ°Г ГўГ¶Гї ГўГЁГЈГ«ГїГ¤Г Вє ГІГ ГЄ - " << name_player;
 						strcpy_s(data.first_second_name_player, name_player.c_str());
 					}
 					else
 					{
-						cout << "\n\tПомилка! Формат введення має бути таким: 'Ярмоленко Андрій' !!";
+						cout << "\n\tГЏГ®Г¬ГЁГ«ГЄГ ! Г”Г®Г°Г¬Г ГІ ГўГўГҐГ¤ГҐГ­Г­Гї Г¬Г Вє ГЎГіГІГЁ ГІГ ГЄГЁГ¬: 'ГџГ°Г¬Г®Г«ГҐГ­ГЄГ® ГЂГ­Г¤Г°ВіГ©' !!";
 					}
 				} while (!flag1);
 
@@ -2411,10 +2412,10 @@ int edit_kod_file_1()
 			case 2:
 				system("cls");
 
-				_ukr(); cout << endl << "\t\tЛюбий користувачу, вводимо нові данні данного поля!" << endl;
+				_ukr(); cout << endl << "\t\tГ‹ГѕГЎГЁГ© ГЄГ®Г°ГЁГ±ГІГіГўГ Г·Гі, ГўГўГ®Г¤ГЁГ¬Г® Г­Г®ГўВі Г¤Г Г­Г­Ві Г¤Г Г­Г­Г®ГЈГ® ГЇГ®Г«Гї!" << endl;
 
 				cin.ignore(cin.rdbuf()->in_avail());
-				_ukr(); cout << endl << "\n\tВедіть дату народження футболіста: ";
+				_ukr(); cout << endl << "\n\tГ‚ГҐГ¤ВіГІГј Г¤Г ГІГі Г­Г Г°Г®Г¤Г¦ГҐГ­Г­Гї ГґГіГІГЎГ®Г«ВіГ±ГІГ : ";
 				data.date_of_birth = vvod_data_of_birth();
 
 				fopen_s(&file_1, "player_1.dat", "r+b");
@@ -2428,25 +2429,25 @@ int edit_kod_file_1()
 				system("cls");
 
 				_ukr();
-				cout << endl << "\t\tЛюбий користувачу, вводимо нові данні данного поля!" << endl;
+				cout << endl << "\t\tГ‹ГѕГЎГЁГ© ГЄГ®Г°ГЁГ±ГІГіГўГ Г·Гі, ГўГўГ®Г¤ГЁГ¬Г® Г­Г®ГўВі Г¤Г Г­Г­Ві Г¤Г Г­Г­Г®ГЈГ® ГЇГ®Г«Гї!" << endl;
 
-				cout << endl << "\n\t\tОберіть стать гравця: ";
-				cout << endl << "\t\t1. 'ж' – жіноча\n\t\t2. 'ч' – чоловіча";
+				cout << endl << "\n\t\tГЋГЎГҐГ°ВіГІГј Г±ГІГ ГІГј ГЈГ°Г ГўГ¶Гї: ";
+				cout << endl << "\t\t1. 'Г¦' вЂ“ Г¦ВіГ­Г®Г·Г \n\t\t2. 'Г·' вЂ“ Г·Г®Г«Г®ГўВіГ·Г ";
 				do {
 					cin.ignore(cin.rdbuf()->in_avail());
-					_ukr(); cout << endl << "\t\tВаш вибiр - ";
-					getline(cin, _сhoice);
-					if (regex_match(_сhoice.c_str(), result_2, regular_2))
+					_ukr(); cout << endl << "\t\tГ‚Г Гё ГўГЁГЎiГ° - ";
+					getline(cin, _Г±hoice);
+					if (regex_match(_Г±hoice.c_str(), result_2, regular_2))
 					{
 						flag2 = true;
-						choice = atoi(_сhoice.c_str());
+						choice = atoi(_Г±hoice.c_str());
 
-						if (choice == 1) strcpy_s(data.sex, "Ж");
-						else strcpy_s(data.sex, "Ч");
+						if (choice == 1) strcpy_s(data.sex, "Г†");
+						else strcpy_s(data.sex, "Г—");
 					}
 					else
 					{
-						_ukr(); cout << "\n\t\tПомилка. Ви маєте можливість використовувати ТІЛЬКИ числа від 1 до 2!" << endl;
+						_ukr(); cout << "\n\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г’ВІГ‹ГњГЉГ€ Г·ГЁГ±Г«Г  ГўВіГ¤ 1 Г¤Г® 2!" << endl;
 					}
 
 				} while (!flag2);
@@ -2462,26 +2463,26 @@ int edit_kod_file_1()
 				system("cls");
 
 				_ukr();
-				cout << endl << "\t\tЛюбий користувачу, вводимо нові данні данного поля!" << endl;
+				cout << endl << "\t\tГ‹ГѕГЎГЁГ© ГЄГ®Г°ГЁГ±ГІГіГўГ Г·Гі, ГўГўГ®Г¤ГЁГ¬Г® Г­Г®ГўВі Г¤Г Г­Г­Ві Г¤Г Г­Г­Г®ГЈГ® ГЇГ®Г«Гї!" << endl;
 
-				cout << endl << "\n\t\tОберіть громадянство зі списку: ";
-				cout << endl << "\t\t1. Україна\n\t\t2. Аргентина\n\t\t3. Іспанія";
+				cout << endl << "\n\t\tГЋГЎГҐГ°ВіГІГј ГЈГ°Г®Г¬Г Г¤ГїГ­Г±ГІГўГ® Г§Ві Г±ГЇГЁГ±ГЄГі: ";
+				cout << endl << "\t\t1. Г“ГЄГ°Г ВїГ­Г \n\t\t2. ГЂГ°ГЈГҐГ­ГІГЁГ­Г \n\t\t3. ВІГ±ГЇГ Г­ВіГї";
 				do {
 					cin.ignore(cin.rdbuf()->in_avail());
-					_ukr(); cout << endl << "\t\tВаш вибiр - ";
-					getline(cin, _сhoice1);
-					if (regex_match(_сhoice1.c_str(), result_3, regular_3))
+					_ukr(); cout << endl << "\t\tГ‚Г Гё ГўГЁГЎiГ° - ";
+					getline(cin, _Г±hoice1);
+					if (regex_match(_Г±hoice1.c_str(), result_3, regular_3))
 					{
 						flag3 = true;
-						choice = atoi(_сhoice1.c_str());
+						choice = atoi(_Г±hoice1.c_str());
 
-						if (choice == 1) strcpy_s(data.nationality, "Україна");
-						else if (choice == 2) strcpy_s(data.nationality, "Аргентина");
-						else strcpy_s(data.nationality, "Іспанія");
+						if (choice == 1) strcpy_s(data.nationality, "Г“ГЄГ°Г ВїГ­Г ");
+						else if (choice == 2) strcpy_s(data.nationality, "ГЂГ°ГЈГҐГ­ГІГЁГ­Г ");
+						else strcpy_s(data.nationality, "ВІГ±ГЇГ Г­ВіГї");
 					}
 					else
 					{
-						_ukr(); cout << "\n\t\tПомилка. Ви маєте можливість використовувати ТІЛЬКИ числа від 1 до 3!" << endl;
+						_ukr(); cout << "\n\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г’ВІГ‹ГњГЉГ€ Г·ГЁГ±Г«Г  ГўВіГ¤ 1 Г¤Г® 3!" << endl;
 					}
 
 				} while (!flag3);
@@ -2497,26 +2498,26 @@ int edit_kod_file_1()
 				system("cls");
 
 				_ukr();
-				cout << endl << "\t\tЛюбий користувачу, вводимо нові данні данного поля!" << endl;
+				cout << endl << "\t\tГ‹ГѕГЎГЁГ© ГЄГ®Г°ГЁГ±ГІГіГўГ Г·Гі, ГўГўГ®Г¤ГЁГ¬Г® Г­Г®ГўВі Г¤Г Г­Г­Ві Г¤Г Г­Г­Г®ГЈГ® ГЇГ®Г«Гї!" << endl;
 
-				cout << endl << "\n\t\tОберіть амплуа зі списку: ";
-				cout << endl << "\t\t1. ВР – воротар\n\t\t2. ЛП – лівий півзахисник\n\t\t3. ЦФ – центр форвард";
+				cout << endl << "\n\t\tГЋГЎГҐГ°ВіГІГј Г Г¬ГЇГ«ГіГ  Г§Ві Г±ГЇГЁГ±ГЄГі: ";
+				cout << endl << "\t\t1. Г‚Гђ вЂ“ ГўГ®Г°Г®ГІГ Г°\n\t\t2. Г‹ГЏ вЂ“ Г«ВіГўГЁГ© ГЇВіГўГ§Г ГµГЁГ±Г­ГЁГЄ\n\t\t3. Г–Г” вЂ“ Г¶ГҐГ­ГІГ° ГґГ®Г°ГўГ Г°Г¤";
 				do {
 					cin.ignore(cin.rdbuf()->in_avail());
-					_ukr(); cout << endl << "\t\tВаш вибiр - ";
-					getline(cin, _сhoice1);
-					if (regex_match(_сhoice1.c_str(), result_3, regular_3))
+					_ukr(); cout << endl << "\t\tГ‚Г Гё ГўГЁГЎiГ° - ";
+					getline(cin, _Г±hoice1);
+					if (regex_match(_Г±hoice1.c_str(), result_3, regular_3))
 					{
 						flag3 = true;
-						choice = atoi(_сhoice1.c_str());
+						choice = atoi(_Г±hoice1.c_str());
 
-						if (choice == 1) strcpy_s(data.role, "ВР");
-						else if (choice == 2) strcpy_s(data.role, "ЛП");
-						else strcpy_s(data.role, "ЦФ");
+						if (choice == 1) strcpy_s(data.role, "Г‚Гђ");
+						else if (choice == 2) strcpy_s(data.role, "Г‹ГЏ");
+						else strcpy_s(data.role, "Г–Г”");
 					}
 					else
 					{
-						_ukr(); cout << "\n\t\tПомилка. Ви маєте можливість використовувати ТІЛЬКИ числа від 1 до 3!" << endl;
+						_ukr(); cout << "\n\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г’ВІГ‹ГњГЉГ€ Г·ГЁГ±Г«Г  ГўВіГ¤ 1 Г¤Г® 3!" << endl;
 					}
 
 				} while (!flag3);
@@ -2532,17 +2533,17 @@ int edit_kod_file_1()
 				system("cls");
 
 				_ukr();
-				cout << endl << "\t\tЛюбий користувачу, вводимо нові данні данного поля!" << endl;
+				cout << endl << "\t\tГ‹ГѕГЎГЁГ© ГЄГ®Г°ГЁГ±ГІГіГўГ Г·Гі, ГўГўГ®Г¤ГЁГ¬Г® Г­Г®ГўВі Г¤Г Г­Г­Ві Г¤Г Г­Г­Г®ГЈГ® ГЇГ®Г«Гї!" << endl;
 
 				do {
 					cin.ignore(cin.rdbuf()->in_avail());
-					_ukr(); cout << endl << "\n\t\tВедіть кількість проведених ігор (KG)  футболіста (від 1 до 150): ";
+					_ukr(); cout << endl << "\n\t\tГ‚ГҐГ¤ВіГІГј ГЄВіГ«ГјГЄВіГ±ГІГј ГЇГ°Г®ГўГҐГ¤ГҐГ­ГЁГµ ВіГЈГ®Г° (KG)  ГґГіГІГЎГ®Г«ВіГ±ГІГ  (ГўВіГ¤ 1 Г¤Г® 150): ";
 					getline(cin, _kol_games);
 					if (regex_match(_kol_games.c_str(), result_three_digit, regular_three_digit))
 					{
 
 						if (atoi(_kol_games.c_str()) < 1 || atoi(_kol_games.c_str()) > 150) {
-							_ukr(); cout << "\n\t\tПомилка. Ви маєте можливість використовувати числа від 1 до 150!" << endl;
+							_ukr(); cout << "\n\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г·ГЁГ±Г«Г  ГўВіГ¤ 1 Г¤Г® 150!" << endl;
 						}
 						else {
 							flag4 = true;
@@ -2551,7 +2552,7 @@ int edit_kod_file_1()
 					}
 					else
 					{
-						_ukr(); cout << "\n\t\tПомилка. Ви маєте можливість використовувати ТІЛЬКИ числа від 1 до 150!" << endl;
+						_ukr(); cout << "\n\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г’ВІГ‹ГњГЉГ€ Г·ГЁГ±Г«Г  ГўВіГ¤ 1 Г¤Г® 150!" << endl;
 					}
 				} while (!flag4);
 
@@ -2569,18 +2570,18 @@ int edit_kod_file_1()
 	}
 	else
 	{
-		if (var == 'Н' || var == 'н' || var == 'N' || var == 'n')
+		if (var == 'ГЌ' || var == 'Г­' || var == 'N' || var == 'n')
 		{
-			_ukr(); cout << endl << "\n\tСпробуйте спочатку!" << endl;
+			_ukr(); cout << endl << "\n\tГ‘ГЇГ°Г®ГЎГіГ©ГІГҐ Г±ГЇГ®Г·Г ГІГЄГі!" << endl;
 		}
 		else {
-			_ukr(); cout << endl << "\n\tПомилка!!!";
+			_ukr(); cout << endl << "\n\tГЏГ®Г¬ГЁГ«ГЄГ !!!";
 		}
 		return 0;
 	}
 }
 
-// функція видалення записів з файла Гравці
+// ГґГіГ­ГЄГ¶ВіГї ГўГЁГ¤Г Г«ГҐГ­Г­Гї Г§Г ГЇГЁГ±ВіГў Г§ ГґГ Г©Г«Г  ГѓГ°Г ГўГ¶Ві
 void del_kod_file_1()
 {
 	player data;
@@ -2594,7 +2595,7 @@ void del_kod_file_1()
 	do {
 		review_file_1();
 		cin.ignore(cin.rdbuf()->in_avail());
-		_ukr(); cout << endl << "\n\tВведіть код гравця, який необхідно видалити - ";
+		_ukr(); cout << endl << "\n\tГ‚ГўГҐГ¤ВіГІГј ГЄГ®Г¤ ГЈГ°Г ГўГ¶Гї, ГїГЄГЁГ© Г­ГҐГ®ГЎГµВіГ¤Г­Г® ГўГЁГ¤Г Г«ГЁГІГЁ - ";
 		getline(cin, _n_del);
 
 		if (regex_match(_n_del.c_str(), result_three_digit, regular_three_digit))
@@ -2604,7 +2605,7 @@ void del_kod_file_1()
 		}
 		else
 		{
-			_ukr(); cout << endl << "\t\tПомилка. Ви маєте можливість використовувати ТІЛЬКИ числа!";
+			_ukr(); cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГЁ Г¬Г ВєГІГҐ Г¬Г®Г¦Г«ГЁГўВіГ±ГІГј ГўГЁГЄГ®Г°ГЁГ±ГІГ®ГўГіГўГ ГІГЁ Г’ВІГ‹ГњГЉГ€ Г·ГЁГ±Г«Г !";
 		}
 
 	} while (!flag1);
@@ -2628,7 +2629,7 @@ void del_kod_file_1()
 	if (temp == 0)
 	{
 		_ukr();
-		cout << endl << "\t\tПомилка. Введеного коду не існує!" << endl;
+		cout << endl << "\t\tГЏГ®Г¬ГЁГ«ГЄГ . Г‚ГўГҐГ¤ГҐГ­Г®ГЈГ® ГЄГ®Г¤Гі Г­ГҐ ВіГ±Г­ГіВє!" << endl;
 	}
 	fclose(file_1);
 	fclose(filehelply_1);
