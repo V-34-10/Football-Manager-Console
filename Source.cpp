@@ -1,4 +1,3 @@
-system("chcp 1251");
 // Необхідні бібліотеки
 #include <iostream>
 #include <iomanip>
